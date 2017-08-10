@@ -49,6 +49,24 @@ Add following lines to your main configuration file:
 ],
 ```
 
+## Import data
+
+Fill console config:
+```php
+'controllerMap' => [
+        'location-import' => [
+            'class' => \dungphanxuan\vnlocation\commands\ImportController::className(),
+        ],
+    ],
+```
+
+Run:
+
+```bash
+# Process and exit on finish
+./yii location-import
+```
+
 ## Todo 
 
  - Init Migrate
@@ -56,3 +74,4 @@ Add following lines to your main configuration file:
  - Init City
  - Init District
  - Init Ward
+ - Seed Data
