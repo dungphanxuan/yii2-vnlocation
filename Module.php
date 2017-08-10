@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\modules\go;
+namespace dungphanxuan\vnlocation;
 
 /**
  * Go module definition class
