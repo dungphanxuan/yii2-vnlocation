@@ -12,7 +12,7 @@ class m170809_040713_create_district_table extends Migration {
 	public function up() {
 		$this->createTable( 'go_district', [
 			'id'             => $this->primaryKey(),
-			'city_id'        => $this->integer()->notNull()->comment('Mã tỉnh/thành phố'),
+			'city_id'        => $this->integer()->notNull()->comment( 'Mã tỉnh/thành phố' ),
 			'name'           => $this->string( 32 )->notNull(),
 			'slug'           => $this->string( 64 ),
 			'full_name'      => $this->string( 128 ),

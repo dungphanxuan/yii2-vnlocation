@@ -9,7 +9,7 @@ class Module extends \yii\base\Module {
 	/**
 	 * @inheritdoc
 	 */
-	public $controllerNamespace = 'backend\modules\go\controllers';
+	public $controllerNamespace = 'dungphanxuan\vnlocation\controllers';
 
 	/**
 	 * @inheritdoc

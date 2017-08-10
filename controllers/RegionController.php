@@ -3,8 +3,8 @@
 namespace dungphanxuan\vnlocation\controllers;
 
 use Yii;
-use dungphanxuan\vnlocation\models\go\GoRegion;
-use dungphanxuan\vnlocation\models\go\GoRegionSearch;
+use dungphanxuan\vnlocation\models\GoRegion;
+use dungphanxuan\vnlocation\models\GoRegionSearch;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;

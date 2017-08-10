@@ -1,6 +1,6 @@
 <?php
 
-namespace dungphanxuan\vnlocation\models\go;
+namespace dungphanxuan\vnlocation\models;
 
 use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
@@ -50,13 +50,7 @@ class City extends \yii\db\ActiveRecord {
 
 	public function behaviors() {
 		return [
-			TimestampBehavior::className(),
-			[
-				'class'            => UploadBehavior::className(),
-				'attribute'        => 'image',
-				'pathAttribute'    => 'image_path',
-				'baseUrlAttribute' => 'image_base_url'
-			]
+			TimestampBehavior::className()
 		];
 	}
 
@@ -82,7 +76,6 @@ class City extends \yii\db\ActiveRecord {
 				'targetClass'     => GoRegion::className(),
 				'targetAttribute' => [ 'region_id' => 'id' ]
 			],
-			[ [ 'image' ], 'safe' ]
 		];
 	}
 
@@ -91,26 +84,26 @@ class City extends \yii\db\ActiveRecord {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'             => Yii::t( 'common', 'ID' ),
-			'region_id'      => Yii::t( 'common', 'Region' ),
-			'name'           => Yii::t( 'common', 'Tên tỉnh/thành phố' ),
-			'slug'           => Yii::t( 'common', 'Slug' ),
-			'short_name'     => Yii::t( 'common', 'Short Name' ),
-			'code'           => Yii::t( 'common', 'Code' ),
-			'code_ghn'       => Yii::t( 'common', 'Code Ghn' ),
-			'code_vtp'       => Yii::t( 'common', 'Code Vtp' ),
-			'code_njv'       => Yii::t( 'common', 'Code Njv' ),
-			'code_kerry'     => Yii::t( 'common', 'Code Kerry' ),
-			'allow'          => Yii::t( 'common', 'Allow' ),
-			'priority'       => Yii::t( 'common', 'Priority' ),
-			'image'          => Yii::t( 'common', 'Image' ),
-			'image_base_url' => Yii::t( 'common', 'Image Base Url' ),
-			'image_path'     => Yii::t( 'common', 'Image Path' ),
-			'lat'            => Yii::t( 'common', 'Lat' ),
-			'lng'            => Yii::t( 'common', 'Lng' ),
-			'status'         => Yii::t( 'common', 'Status' ),
-			'created_at'     => Yii::t( 'common', 'Created At' ),
-			'updated_at'     => Yii::t( 'common', 'Updated At' ),
+			'id'             => 'ID',
+			'region_id'      => 'Region',
+			'name'           => 'Tên tỉnh/thành phố',
+			'slug'           => 'Slug',
+			'short_name'     => 'Short Name',
+			'code'           => 'Code',
+			'code_ghn'       => 'Code Ghn',
+			'code_vtp'       => 'Code Vtp',
+			'code_njv'       => 'Code Njv',
+			'code_kerry'     => 'Code Kerry',
+			'allow'          => 'Allow',
+			'priority'       => 'Priority',
+			'image'          => 'Image',
+			'image_base_url' => 'Image Base Url',
+			'image_path'     => 'Image Path',
+			'lat'            => 'Lat',
+			'lng'            => 'Lng',
+			'status'         => 'Status',
+			'created_at'     => 'Created At',
+			'updated_at'     => 'Updated At',
 		];
 	}
 

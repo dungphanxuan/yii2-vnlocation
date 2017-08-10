@@ -1,10 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-use backend\grid\GridView;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel dungphanxuan\vnlocation\models\go\CitySearch */
+/* @var $searchModel dungphanxuan\vnlocation\models\CitySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title                   = 'Tỉnh/Thành phố';
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="pull-right">
         <p>
-		    <?php echo Html::a( '<i class="fa fa-plus-circle" aria-hidden="true"></i> Create City', [ 'create' ], [ 'class' => 'btn btn-success' ] ) ?>
+			<?php echo Html::a( '<i class="fa fa-plus-circle" aria-hidden="true"></i> Create City', [ 'create' ], [ 'class' => 'btn btn-success' ] ) ?>
         </p>
     </div>
 
@@ -32,16 +32,16 @@ $this->params['breadcrumbs'][] = $this->title;
 				'contentOptions' => [ 'style' => 'width:7%;text-align:center' ],
 			],
 			[
-				'attribute'      => 'region_id',
-				'value'          => function ( $model ) {
+				'attribute' => 'region_id',
+				'value'     => function ( $model ) {
 					return $model->region ? $model->region->title : null;
 				},
-				'filter'         => \yii\helpers\ArrayHelper::map( \dungphanxuan\vnlocation\models\go\GoRegion::find()->all(), 'id', 'title' )
+				'filter'    => \yii\helpers\ArrayHelper::map( \dungphanxuan\vnlocation\models\GoRegion::find()->all(), 'id', 'title' )
 			],
 			[
-				'attribute'      => 'name',
-				'format'         => 'raw',
-				'label'          => 'Tên Tỉnh/TP',
+				'attribute' => 'name',
+				'format'    => 'raw',
+				'label'     => 'Tên Tỉnh/TP',
 			],
 			//'slug',
 			'short_name',
@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			// 'code_njv',
 			// 'code_kerry',
 			// 'allow',
-			 'priority',
+			'priority',
 			[
 				'attribute'      => 'total_district',
 				'format'         => 'raw',
@@ -75,10 +75,10 @@ $this->params['breadcrumbs'][] = $this->title;
 			// 'lat',
 			// 'lng',
 			// 'status',
-			 'created_at:date',
+			'created_at:date',
 			// 'updated_at',
 
-			[ 'class' => 'backend\grid\ActionColumn' ],
+			[ 'class' => 'yii\grid\ActionColumn' ],
 		],
 	] ); ?>
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace dungphanxuan\vnlocation\models\go;
+namespace dungphanxuan\vnlocation\models;
 
 use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
@@ -55,13 +55,7 @@ class District extends \yii\db\ActiveRecord {
 
 	public function behaviors() {
 		return [
-			TimestampBehavior::className(),
-			[
-				'class'            => UploadBehavior::className(),
-				'attribute'        => 'image',
-				'pathAttribute'    => 'image_path',
-				'baseUrlAttribute' => 'image_base_url'
-			]
+			TimestampBehavior::className()
 		];
 	}
 
@@ -89,8 +83,7 @@ class District extends \yii\db\ActiveRecord {
 				'skipOnError'     => true,
 				'targetClass'     => City::className(),
 				'targetAttribute' => [ 'city_id' => 'id' ]
-			],
-			[ [ 'image' ], 'safe' ]
+			]
 		];
 	}
 
@@ -99,29 +92,29 @@ class District extends \yii\db\ActiveRecord {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'             => Yii::t( 'common', 'ID' ),
-			'region_id'      => Yii::t( 'common', 'Region' ),
-			'city_id'        => Yii::t( 'common', 'City' ),
-			'name'           => Yii::t( 'common', 'District Name' ),
-			'slug'           => Yii::t( 'common', 'Slug' ),
-			'full_name'      => Yii::t( 'common', 'Full Name' ),
-			'short_name'     => Yii::t( 'common', 'Short Name' ),
-			'code'           => Yii::t( 'common', 'Code' ),
-			'code_ghn'       => Yii::t( 'common', 'Code Ghn' ),
-			'code_vtp'       => Yii::t( 'common', 'Code Vtp' ),
-			'code_kerry'     => Yii::t( 'common', 'Code Kerry' ),
-			'code_spl'       => Yii::t( 'common', 'Code Spl' ),
-			'kind_from'      => Yii::t( 'common', 'Kind From' ),
-			'kind_to'        => Yii::t( 'common', 'Kind To' ),
-			'allow'          => Yii::t( 'common', 'Allow' ),
-			'priority'       => Yii::t( 'common', 'Priority' ),
-			'image_base_url' => Yii::t( 'common', 'Image Base Url' ),
-			'image_path'     => Yii::t( 'common', 'Image Path' ),
-			'lat'            => Yii::t( 'common', 'Lat' ),
-			'lng'            => Yii::t( 'common', 'Lng' ),
-			'status'         => Yii::t( 'common', 'Status' ),
-			'created_at'     => Yii::t( 'common', 'Created At' ),
-			'updated_at'     => Yii::t( 'common', 'Updated At' ),
+			'id'             => 'ID',
+			'region_id'      => 'Region',
+			'city_id'        => 'City',
+			'name'           => 'District Name',
+			'slug'           => 'Slug',
+			'full_name'      => 'Full Name',
+			'short_name'     => 'Short Name',
+			'code'           => 'Code',
+			'code_ghn'       => 'Code Ghn',
+			'code_vtp'       => 'Code Vtp',
+			'code_kerry'     => 'Code Kerry',
+			'code_spl'       => 'Code Spl',
+			'kind_from'      => 'Kind From',
+			'kind_to'        => 'Kind To',
+			'allow'          => 'Allow',
+			'priority'       => 'Priority',
+			'image_base_url' => 'Image Base Url',
+			'image_path'     => 'Image Path',
+			'lat'            => 'Lat',
+			'lng'            => 'Lng',
+			'status'         => 'Status',
+			'created_at'     => 'Created At',
+			'updated_at'     => 'Updated At',
 		];
 	}
 
@@ -141,9 +134,9 @@ class District extends \yii\db\ActiveRecord {
 
 	public static function getDistricts( $city_id ) {
 		$dataModel = District::find()
-		                 ->where( [ 'city_id' => $city_id ] )
-		                 ->asArray()
-		                 ->all();
+		                     ->where( [ 'city_id' => $city_id ] )
+		                     ->asArray()
+		                     ->all();
 		$data      = ArrayHelper::map( $dataModel, 'id', 'name' );
 
 		return $data;

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model dungphanxuan\vnlocation\models\go\City */
+/* @var $model dungphanxuan\vnlocation\models\City */
 /* @var $regions */
 
 $this->title                   = 'Create City';
@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="city-create">
 
 	<?php echo $this->render( '_form', [
-		'model' => $model,
+		'model'   => $model,
 		'regions' => $regions,
 	] ) ?>
 

@@ -2,10 +2,10 @@
 
 namespace dungphanxuan\vnlocation\controllers;
 
-use dungphanxuan\vnlocation\models\go\GoRegion;
+use dungphanxuan\vnlocation\models\GoRegion;
 use Yii;
-use dungphanxuan\vnlocation\models\go\City;
-use dungphanxuan\vnlocation\models\go\CitySearch;
+use dungphanxuan\vnlocation\models\City;
+use dungphanxuan\vnlocation\models\CitySearch;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 use yii\web\Controller;
@@ -38,7 +38,7 @@ class CityController extends Controller {
 		$params      = Yii::$app->request->queryParams;
 
 		//Filter Category
-		$getRegion = getParam( 'region_id', null );
+		$getRegion = Yii::$app->request->get( 'region_id', null );
 		if ( $getRegion ) {
 			$params['CitySearch']['region_id'] = $getRegion;
 		}

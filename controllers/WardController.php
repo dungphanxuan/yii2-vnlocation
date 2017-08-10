@@ -2,12 +2,12 @@
 
 namespace dungphanxuan\vnlocation\controllers;
 
-use dungphanxuan\vnlocation\models\go\GoRegion;
+use dungphanxuan\vnlocation\models\GoRegion;
 use Yii;
-use dungphanxuan\vnlocation\models\go\District;
-use dungphanxuan\vnlocation\models\go\City;
-use dungphanxuan\vnlocation\models\go\Ward;
-use dungphanxuan\vnlocation\models\go\WardSearch;
+use dungphanxuan\vnlocation\models\District;
+use dungphanxuan\vnlocation\models\City;
+use dungphanxuan\vnlocation\models\Ward;
+use dungphanxuan\vnlocation\models\WardSearch;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -38,7 +38,7 @@ class WardController extends Controller {
 		$params      = Yii::$app->request->queryParams;
 
 		//Filter Category
-		$getDistrict = getParam( 'district_id', null );
+		$getDistrict = Yii::$app->request->get( 'district_id', null );
 		if ( $getDistrict ) {
 			$params['WardSearch']['district_id'] = $getDistrict;
 		}

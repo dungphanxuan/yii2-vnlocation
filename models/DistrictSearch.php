@@ -1,14 +1,13 @@
 <?php
 
-namespace dungphanxuan\vnlocation\models\go;
+namespace dungphanxuan\vnlocation\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use dungphanxuan\vnlocation\models\go\District;
 
 /**
- * DistrictSearch represents the model behind the search form about `dungphanxuan\vnlocation\models\go\District`.
+ * DistrictSearch represents the model behind the search form about `dungphanxuan\vnlocation\models\District`.
  */
 class DistrictSearch extends District {
 	/**

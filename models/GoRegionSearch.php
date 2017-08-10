@@ -1,14 +1,13 @@
 <?php
 
-namespace dungphanxuan\vnlocation\models\go;
+namespace dungphanxuan\vnlocation\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use dungphanxuan\vnlocation\models\go\GoRegion;
 
 /**
- * GoRegionSearch represents the model behind the search form about `dungphanxuan\vnlocation\models\go\GoRegion`.
+ * GoRegionSearch represents the model behind the search form about `dungphanxuan\vnlocation\models\GoRegion`.
  */
 class GoRegionSearch extends GoRegion {
 	/**

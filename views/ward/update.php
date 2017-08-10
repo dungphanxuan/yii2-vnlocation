@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model dungphanxuan\vnlocation\models\go\Ward */
+/* @var $model dungphanxuan\vnlocation\models\Ward */
 /* @var $regions */
 /* @var $dataCity */
 /* @var $districts */

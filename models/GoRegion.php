@@ -1,6 +1,6 @@
 <?php
 
-namespace dungphanxuan\vnlocation\models\go;
+namespace dungphanxuan\vnlocation\models;
 
 use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
@@ -40,12 +40,6 @@ class GoRegion extends \yii\db\ActiveRecord {
 				'class'              => TimestampBehavior::className(),
 				'createdAtAttribute' => 'created_at',
 				'updatedAtAttribute' => 'created_at',
-			],
-			[
-				'class'            => UploadBehavior::className(),
-				'attribute'        => 'image',
-				'pathAttribute'    => 'image_path',
-				'baseUrlAttribute' => 'image_base_url'
 			]
 		];
 	}
@@ -59,7 +53,6 @@ class GoRegion extends \yii\db\ActiveRecord {
 			[ [ 'status', 'created_at' ], 'integer' ],
 			[ [ 'title', 'slug' ], 'string', 'max' => 32 ],
 			[ [ 'image_base_url', 'image_path' ], 'string', 'max' => 255 ],
-			[ [ 'image' ], 'safe' ]
 		];
 	}
 
@@ -68,14 +61,14 @@ class GoRegion extends \yii\db\ActiveRecord {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'             => Yii::t( 'common', 'ID' ),
-			'title'          => Yii::t( 'common', 'Title' ),
-			'slug'           => Yii::t( 'common', 'Slug' ),
-			'image'          => Yii::t( 'common', 'Image' ),
-			'image_base_url' => Yii::t( 'common', 'Image Base Url' ),
-			'image_path'     => Yii::t( 'common', 'Image Path' ),
-			'status'         => Yii::t( 'common', 'Status' ),
-			'created_at'     => Yii::t( 'common', 'Created At' ),
+			'id'             => 'ID',
+			'title'          => 'Title',
+			'slug'           => 'Slug',
+			'image'          => 'Image',
+			'image_base_url' => 'Image Base Url',
+			'image_path'     => 'Image Path',
+			'status'         => 'Status',
+			'created_at'     => 'Created At',
 		];
 	}
 

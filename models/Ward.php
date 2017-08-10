@@ -1,6 +1,6 @@
 <?php
 
-namespace dungphanxuan\vnlocation\models\go;
+namespace dungphanxuan\vnlocation\models;
 
 use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
@@ -47,13 +47,7 @@ class Ward extends \yii\db\ActiveRecord {
 
 	public function behaviors() {
 		return [
-			TimestampBehavior::className(),
-			[
-				'class'            => UploadBehavior::className(),
-				'attribute'        => 'image',
-				'pathAttribute'    => 'image_path',
-				'baseUrlAttribute' => 'image_base_url'
-			]
+			TimestampBehavior::className()
 		];
 	}
 
@@ -75,8 +69,7 @@ class Ward extends \yii\db\ActiveRecord {
 				'skipOnError'     => true,
 				'targetClass'     => District::className(),
 				'targetAttribute' => [ 'district_id' => 'id' ]
-			],
-			[ [ 'image' ], 'safe' ]
+			]
 		];
 	}
 
@@ -85,24 +78,24 @@ class Ward extends \yii\db\ActiveRecord {
 	 */
 	public function attributeLabels() {
 		return [
-			'id'             => Yii::t( 'common', 'ID' ),
-			'region_id'      => Yii::t( 'common', 'Region' ),
-			'city_id'        => Yii::t( 'common', 'City' ),
-			'district_id'    => Yii::t( 'common', 'District' ),
-			'name'           => Yii::t( 'common', 'Ward Name' ),
-			'slug'           => Yii::t( 'common', 'Slug' ),
-			'fullname'       => Yii::t( 'common', 'Fullname' ),
-			'short_name'     => Yii::t( 'common', 'Short Name' ),
-			'code_vtp'       => Yii::t( 'common', 'Code Vtp' ),
-			'code_spl'       => Yii::t( 'common', 'Code Spl' ),
-			'priority'       => Yii::t( 'common', 'Priority' ),
-			'image_base_url' => Yii::t( 'common', 'Image Base Url' ),
-			'image_path'     => Yii::t( 'common', 'Image Path' ),
-			'lat'            => Yii::t( 'common', 'Lat' ),
-			'lng'            => Yii::t( 'common', 'Lng' ),
-			'status'         => Yii::t( 'common', 'Status' ),
-			'created_at'     => Yii::t( 'common', 'Created At' ),
-			'updated_at'     => Yii::t( 'common', 'Updated At' ),
+			'id'             => 'ID',
+			'region_id'      => 'Region',
+			'city_id'        => 'City',
+			'district_id'    => 'District',
+			'name'           => 'Ward Name',
+			'slug'           => 'Slug',
+			'fullname'       => 'Fullname',
+			'short_name'     => 'Short Name',
+			'code_vtp'       => 'Code Vtp',
+			'code_spl'       => 'Code Spl',
+			'priority'       => 'Priority',
+			'image_base_url' => 'Image Base Url',
+			'image_path'     => 'Image Path',
+			'lat'            => 'Lat',
+			'lng'            => 'Lng',
+			'status'         => 'Status',
+			'created_at'     => 'Created At',
+			'updated_at'     => 'Updated At',
 		];
 	}
 

@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model dungphanxuan\vnlocation\models\go\GoRegion */
+/* @var $model dungphanxuan\vnlocation\models\GoRegion */
 
 $this->title                   = 'Update Go Region: ' . ' ' . $model->title;
 $this->params['breadcrumbs'][] = [ 'label' => 'Go Regions', 'url' => [ 'index' ] ];

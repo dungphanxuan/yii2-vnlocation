@@ -29,6 +29,26 @@ or add
 
 to the require section of your composer.json.
 
+Then init migrate for setup table
+
+ - yii migrate --migrationPath=@vendor/dungphanxuan/yii2-vnlocation/mi
+   grations
+
+
+##  Configure
+
+> **NOTE:** Make sure that you don't have `go` component configuration in your config files.
+
+Add following lines to your main configuration file:
+
+```php
+'modules' => [
+    'go' => [
+        'class' => 'dungphanxuan\vnlocation\Module',
+    ],
+],
+```
+
 ## Todo 
 
  - Init Migrate

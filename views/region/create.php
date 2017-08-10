@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model dungphanxuan\vnlocation\models\go\GoRegion */
+/* @var $model dungphanxuan\vnlocation\models\GoRegion */
 
 $this->title                   = 'Create Go Region';
 $this->params['breadcrumbs'][] = [ 'label' => 'Go Regions', 'url' => [ 'index' ] ];

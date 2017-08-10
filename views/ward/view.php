@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model dungphanxuan\vnlocation\models\go\Ward */
+/* @var $model dungphanxuan\vnlocation\models\Ward */
 
 $this->title                   = $model->name;
 $this->params['breadcrumbs'][] = [ 'label' => 'Wards', 'url' => [ 'index' ] ];

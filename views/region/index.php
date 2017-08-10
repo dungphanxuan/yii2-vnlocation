@@ -1,10 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-use backend\grid\GridView;
+use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel dungphanxuan\vnlocation\models\go\GoRegionSearch */
+/* @var $searchModel dungphanxuan\vnlocation\models\GoRegionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title                   = 'Miền';
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="pull-right">
         <p>
-		    <?php echo Html::a( '<i class="fa fa-plus-circle" aria-hidden="true"></i> Create  Region', [ 'create' ], [ 'class' => 'btn btn-success' ] ) ?>
+			<?php echo Html::a( '<i class="fa fa-plus-circle" aria-hidden="true"></i> Create  Region', [ 'create' ], [ 'class' => 'btn btn-success' ] ) ?>
         </p>
     </div>
 
@@ -46,9 +46,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				},
 			],
-			 'created_at:date',
+			'created_at:date',
 
-			[ 'class' => 'backend\grid\ActionColumn' ],
+			[ 'class' => 'yii\grid\ActionColumn' ],
 		],
 	] ); ?>
 
