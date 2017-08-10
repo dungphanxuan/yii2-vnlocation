@@ -18,7 +18,7 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist dungphanxuan/yii2-vnlocation
+php composer.phar require  dungphanxuan/yii2-vnlocation=dev-master
 ```
 
 or add
