@@ -1,0 +1,39 @@
+{
+  "name": "dungphanxuan/yii2-vnlocation",
+  "description": "Flexible Viet Nam location module for Yii2",
+  "keywords": [
+    "yii2",
+    "yii2-vnlocation",
+    "location management",
+    "dungphanxuan"
+  ],
+  "type": "yii2-extension",
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/dungphanxuan/yii2-vnlocation/issues?state=open",
+    "forum": "https://gitter.im/dungphanxuan/yii2-vnlocation",
+    "source": "https://github.com/dungphanxuan/yii2-vnlocation"
+  },
+  "authors": [
+    {
+      "name": "Dung Phan Xuan",
+      "email": "dungphanxuan999@gmail.com",
+      "homepage": "http://yiiframework.vn"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "yiisoft/yii2": "^2.0.0",
+    "yiisoft/yii2-swiftmailer": "^2.0.0",
+    "yiisoft/yii2-authclient": "^2.1.0",
+    "yiisoft/yii2-bootstrap": "^2.0.0",
+    "kartik-v/dependent-dropdown": "@dev",
+    "kartik-v/yii2-widget-select2": "@dev",
+    "kartik-v/yii2-widget-depdrop": "@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "dungphanxuan\\vnlocation\\": ""
+    }
+  }
+}

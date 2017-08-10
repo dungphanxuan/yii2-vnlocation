@@ -1,0 +1,38 @@
+<p align="center">
+    <a href="https://github.com/yiisoft" target="_blank">
+        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
+    </a>
+    <h1 align="center">Yii 2 Viet Nam Location</h1>
+    <br>
+</p>
+
+## Requirements
+
+ - yii2-widget-depdrop
+ - yii2-widget-select2
+ 
+## Installation
+
+The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+
+Either run
+
+```
+php composer.phar require --prefer-dist dungphanxuan/yii2-vnlocation
+```
+
+or add
+
+```json
+"dungphanxuan/yii2-vnlocation": "@dev"
+```
+
+to the require section of your composer.json.
+
+## Todo 
+
+ - Init Migrate
+ - Init Region
+ - Init City
+ - Init District
+ - Init Ward
