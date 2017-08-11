@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel dungphanxuan\vnlocation\models\DistrictSearch */
@@ -20,6 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </p>
     </div>
 
+	<?php Pjax::begin( [ 'id' => 'datas', 'timeout' => 3000, 'scrollTo' => 0 ] ); ?>
 
 	<?php echo GridView::widget( [
 		'dataProvider' => $dataProvider,
@@ -53,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					return Html::a( $model->total, [
 						'/go/ward/index',
 						'district_id' => $model->id
-					], [ 'class' => 'alink' ] );
+					], [ 'class' => 'alink', 'target' => '_blank', 'data-pjax' => 0 ] );
 
 				},
 			],
@@ -76,5 +78,5 @@ $this->params['breadcrumbs'][] = $this->title;
 			[ 'class' => 'dungphanxuan\vnlocation\grid\ActionColumn' ],
 		],
 	] ); ?>
-
+	<?php Pjax::end(); ?>
 </div>

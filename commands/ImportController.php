@@ -36,8 +36,8 @@ class ImportController extends Controller {
 		$fp       = fopen( $jsonfile, 'r' );
 		$data     = fread( $fp, filesize( $jsonfile ) );
 		fclose( $fp );
-		$data                        = json_decode( $data );
-		$dataAll                     = $data->data;
+		$data    = json_decode( $data );
+		$dataAll = $data->data;
 
 		foreach ( $dataAll as $item ) {
 			$dataInser = (array) $item;
@@ -58,8 +58,8 @@ class ImportController extends Controller {
 		$fp       = fopen( $jsonfile, 'r' );
 		$data     = fread( $fp, filesize( $jsonfile ) );
 		fclose( $fp );
-		$data                        = json_decode( $data );
-		$dataAll                     = $data->data;
+		$data    = json_decode( $data );
+		$dataAll = $data->data;
 
 		foreach ( $dataAll as $item ) {
 			$dataInser = (array) $item;
@@ -88,8 +88,8 @@ class ImportController extends Controller {
 		$fp       = fopen( $jsonfile, 'r' );
 		$data     = fread( $fp, filesize( $jsonfile ) );
 		fclose( $fp );
-		$data                        = json_decode( $data );
-		$dataAll                     = $data->data;
+		$data    = json_decode( $data );
+		$dataAll = $data->data;
 
 		foreach ( $dataAll as $item ) {
 			$dataInser = (array) $item;

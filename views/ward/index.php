@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel dungphanxuan\vnlocation\models\WardSearch */
@@ -22,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <br>
         <br>
+		<?php Pjax::begin( [ 'id' => 'datas', 'timeout' => 3000, 'scrollTo' => 0 ] ); ?>
 
 		<?php echo GridView::widget( [
 			'dataProvider' => $dataProvider,
@@ -80,7 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				],
 			],
 		] ); ?>
-
+		<?php Pjax::end(); ?>
     </div>
 <?php
 $app_css = <<<CSS

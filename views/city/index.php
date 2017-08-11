@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel dungphanxuan\vnlocation\models\CitySearch */
@@ -19,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			<?php echo Html::a( '<i class="fa fa-plus-circle" aria-hidden="true"></i> Create City', [ 'create' ], [ 'class' => 'btn btn-success' ] ) ?>
         </p>
     </div>
+	<?php Pjax::begin( [ 'id' => 'datas', 'timeout' => 3000, 'scrollTo' => 0 ] ); ?>
 
 	<?php echo GridView::widget( [
 		'dataProvider' => $dataProvider,
@@ -81,5 +83,5 @@ $this->params['breadcrumbs'][] = $this->title;
 			[ 'class' => 'dungphanxuan\vnlocation\grid\ActionColumn' ],
 		],
 	] ); ?>
-
+	<?php Pjax::end(); ?>
 </div>
