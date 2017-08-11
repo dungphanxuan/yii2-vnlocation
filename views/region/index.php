@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 			'created_at:date',
 
-			[ 'class' => 'yii\grid\ActionColumn' ],
+			[ 'class' => 'dungphanxuan\vnlocation\grid\ActionColumn' ],
 		],
 	] ); ?>
 

@@ -45,7 +45,7 @@ $cityDesc = empty( $model->district_id ) ? '' : District::findOne( $model->distr
 			<?php
 			echo $form->field( $model, 'district_id' )->widget( Select2::classname(), [
 				'initValueText' => $cityDesc, // set the initial display text
-				'options'       => [ 'placeholder' => 'Tìm kiếm Tỉnh/Thành Phố ...' ],
+				'options'       => [ 'placeholder' => 'Tìm kiếm Quận/Huyện ...' ],
 				'pluginOptions' => [
 					'allowClear'        => true,
 					//'minimumInputLength' => 3,

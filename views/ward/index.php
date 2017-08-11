@@ -74,7 +74,10 @@ $this->params['breadcrumbs'][] = $this->title;
 				// 'created_at',
 				// 'updated_at',
 
-				[ 'class' => 'yii\grid\ActionColumn' ],
+				[
+					'class'          => 'dungphanxuan\vnlocation\grid\ActionColumn',
+					'contentOptions' => [ 'style' => 'width:12%;text-align:center' ],
+				],
 			],
 		] ); ?>
 

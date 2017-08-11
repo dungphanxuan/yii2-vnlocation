@@ -89,7 +89,6 @@ use yii\bootstrap\ActiveForm;
             </div>
         </div>
 
-
 		<?php ActiveForm::end(); ?>
 
     </div>
@@ -99,6 +98,9 @@ $app_css = <<<CSS
   height: 2px;
   color: red;
   border-top: 2px solid #80CBC4;
+}
+.btn200{
+  width: 200px;
 }
 CSS;
 $this->registerCss( $app_css );
