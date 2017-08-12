@@ -51,7 +51,7 @@ class CitySearch extends City {
 	 * @return ActiveDataProvider
 	 */
 	public function search( $params ) {
-		$query = City::find();
+		$query = City::find()->orderBy(['priority' => SORT_DESC]);
 
 		$dataProvider = new ActiveDataProvider( [
 			'query' => $query,
