@@ -17,6 +17,8 @@ use yii\filters\VerbFilter;
  * CityController implements the CRUD actions for City model.
  */
 class CityController extends Controller {
+
+	public $enableCsrfValidation = false;
 	public function behaviors() {
 		return \yii\helpers\ArrayHelper::merge( parent::behaviors(), [
 			'verbs' => [
@@ -115,9 +117,9 @@ class CityController extends Controller {
 	 * @return mixed
 	 */
 	public function actionDelete( $id ) {
-		throw new ForbiddenHttpException( 'Not Allow' );
+		//throw new ForbiddenHttpException( 'Not Allow' );
 
-		//$this->findModel( $id )->delete();
+		$this->findModel( $id )->delete();
 
 		return $this->redirect( [ 'index' ] );
 	}

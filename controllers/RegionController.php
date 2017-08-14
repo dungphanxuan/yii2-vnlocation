@@ -102,9 +102,9 @@ class RegionController extends Controller {
 	 * @return mixed
 	 */
 	public function actionDelete( $id ) {
-		throw new ForbiddenHttpException( 'Not Allow' );
+		//throw new ForbiddenHttpException( 'Not Allow' );
 
-		//$this->findModel( $id )->delete();
+		$this->findModel( $id )->delete();
 
 		return $this->redirect( [ 'index' ] );
 	}
