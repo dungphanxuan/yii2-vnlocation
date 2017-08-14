@@ -31,8 +31,7 @@ to the require section of your composer.json.
 
 Then init migrate for setup table
 
- - yii migrate --migrationPath=@vendor/dungphanxuan/yii2-vnlocation/mi
-   grations
+ - yii migrate --migrationPath=@vendor/dungphanxuan/yii2-vnlocation/migrations
 
 
 ##  Configure
