@@ -7,8 +7,8 @@ use yii\helpers\Html;
 /* @var $model dungphanxuan\vnlocation\models\City */
 /* @var $regions */
 
-$this->title                   = 'Create City';
-$this->params['breadcrumbs'][] = [ 'label' => 'Cities', 'url' => [ 'index' ] ];
+$this->title                   = 'Thêm mới Tỉnh/Thành Phố';
+$this->params['breadcrumbs'][] = [ 'label' => 'Tỉnh/Thành Phố', 'url' => [ 'index' ] ];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="city-create">

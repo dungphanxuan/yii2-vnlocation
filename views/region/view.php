@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model dungphanxuan\vnlocation\models\GoRegion */
 
 $this->title                   = $model->title;
-$this->params['breadcrumbs'][] = [ 'label' => 'Go Regions', 'url' => [ 'index' ] ];
+$this->params['breadcrumbs'][] = [ 'label' => 'Regions', 'url' => [ 'index' ] ];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="go-region-view">

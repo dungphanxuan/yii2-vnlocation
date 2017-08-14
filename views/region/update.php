@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model dungphanxuan\vnlocation\models\GoRegion */
 
-$this->title                   = 'Update Go Region: ' . ' ' . $model->title;
-$this->params['breadcrumbs'][] = [ 'label' => 'Go Regions', 'url' => [ 'index' ] ];
+$this->title                   = 'Cập nhật Miền: ' . ' ' . $model->title;
+$this->params['breadcrumbs'][] = [ 'label' => 'Danh sách Miền', 'url' => [ 'index' ] ];
 $this->params['breadcrumbs'][] = [ 'label' => $model->title, 'url' => [ 'view', 'id' => $model->id ] ];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

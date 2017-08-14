@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model dungphanxuan\vnlocation\models\GoRegion */
 
-$this->title                   = 'Create Go Region';
-$this->params['breadcrumbs'][] = [ 'label' => 'Go Regions', 'url' => [ 'index' ] ];
+$this->title                   = 'Thêm mới Miền';
+$this->params['breadcrumbs'][] = [ 'label' => 'Danh sách Miền', 'url' => [ 'index' ] ];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="go-region-create">

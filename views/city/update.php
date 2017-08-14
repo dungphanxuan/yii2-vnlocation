@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $model dungphanxuan\vnlocation\models\City */
 /* @var $regions */
 
-$this->title                   = 'Update City: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = [ 'label' => 'Cities', 'url' => [ 'index' ] ];
+$this->title                   = 'Cập nhật Tỉnh/Thành Phố: ' . ' ' . $model->name;
+$this->params['breadcrumbs'][] = [ 'label' => 'Tỉnh/Thành Phố', 'url' => [ 'index' ] ];
 $this->params['breadcrumbs'][] = [ 'label' => $model->name, 'url' => [ 'view', 'id' => $model->id ] ];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

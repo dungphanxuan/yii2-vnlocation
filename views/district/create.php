@@ -9,7 +9,7 @@ use yii\helpers\Html;
 /* @var $dataCity */
 
 $this->title                   = 'Thêm mới Quận/Huyện';
-$this->params['breadcrumbs'][] = [ 'label' => 'Districts', 'url' => [ 'index' ] ];
+$this->params['breadcrumbs'][] = [ 'label' => 'Quận/Huyện', 'url' => [ 'index' ] ];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="district-create">
