@@ -5,6 +5,7 @@ namespace dungphanxuan\vnlocation\models;
 use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "go_ward".
@@ -104,5 +105,15 @@ class Ward extends \yii\db\ActiveRecord {
 	 */
 	public function getDistrict() {
 		return $this->hasOne( District::className(), [ 'id' => 'district_id' ] );
+	}
+
+	public static function getWards( $distric_id ) {
+		$dataModel = Ward::find()
+		                 ->where( [ 'district_id' => $distric_id ] )
+		                 ->asArray()
+		                 ->all();
+		$data      = ArrayHelper::map( $dataModel, 'id', 'name' );
+
+		return $data;
 	}
 }
