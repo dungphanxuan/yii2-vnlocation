@@ -2,6 +2,7 @@
 
 namespace dungphanxuan\vnlocation\controllers;
 
+use dungphanxuan\vnlocation\helpers\MapHelper;
 use dungphanxuan\vnlocation\models\GoRegion;
 use Yii;
 use dungphanxuan\vnlocation\models\District;
@@ -20,6 +21,7 @@ use yii\filters\VerbFilter;
 class WardController extends Controller {
 
 	public $enableCsrfValidation = false;
+
 	public function behaviors() {
 		return \yii\helpers\ArrayHelper::merge( parent::behaviors(), [
 			'verbs' => [
@@ -136,6 +138,15 @@ class WardController extends Controller {
 			$dataCity         = City::getCities( $model->region_id );
 			$dataDistrict     = District::getDistricts( $model->city_id );
 
+			//Find Location
+			if ( empty( $model->lat ) ) {
+				$dataLocation = MapHelper::getLocationbyAddress( $model->fullname );
+				if ( $dataLocation ) {
+					$model->lat = $dataLocation->lat;
+					$model->lng = $dataLocation->lng;
+					$model->save( false );
+				}
+			}
 		}
 
 		return $this->render( 'update', [

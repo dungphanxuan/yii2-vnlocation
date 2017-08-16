@@ -45,7 +45,7 @@ class WardSearch extends Ward {
 		$dataProvider = new ActiveDataProvider( [
 			'query'      => $query,
 			'pagination' => [
-				'pageSize' => 30,
+				'pageSize' => 50,
 			],
 		] );
 

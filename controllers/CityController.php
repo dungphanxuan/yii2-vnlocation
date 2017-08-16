@@ -2,6 +2,7 @@
 
 namespace dungphanxuan\vnlocation\controllers;
 
+use dungphanxuan\vnlocation\helpers\MapHelper;
 use dungphanxuan\vnlocation\models\GoRegion;
 use Yii;
 use dungphanxuan\vnlocation\models\City;
@@ -19,6 +20,7 @@ use yii\filters\VerbFilter;
 class CityController extends Controller {
 
 	public $enableCsrfValidation = false;
+
 	public function behaviors() {
 		return \yii\helpers\ArrayHelper::merge( parent::behaviors(), [
 			'verbs' => [
@@ -99,6 +101,15 @@ class CityController extends Controller {
 		if ( $model->load( Yii::$app->request->post() ) ) {
 			if ( $model->save() ) {
 				return $this->redirect( [ 'index' ] );
+			}
+		} else {
+			if ( empty( $model->lat ) ) {
+				$dataLocation = MapHelper::getLocationbyAddress( $model->name );
+				if ( $dataLocation ) {
+					$model->lat = $dataLocation->lat;
+					$model->lng = $dataLocation->lng;
+					$model->save( false );
+				}
 			}
 		}
 

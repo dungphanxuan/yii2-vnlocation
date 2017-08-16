@@ -2,6 +2,7 @@
 
 namespace dungphanxuan\vnlocation\controllers;
 
+use dungphanxuan\vnlocation\helpers\MapHelper;
 use dungphanxuan\vnlocation\models\GoRegion;
 use Yii;
 use dungphanxuan\vnlocation\models\District;
@@ -127,7 +128,15 @@ class DistrictController extends Controller {
 			//Init region data
 			$model->region_id = $model->city->region_id;
 			$dataCity         = \dungphanxuan\vnlocation\models\City::getCities( $model->region_id );
-
+			//Find Location
+			if ( empty( $model->lat ) ) {
+				$dataLocation = MapHelper::getLocationbyAddress( $model->full_name );
+				if ( $dataLocation ) {
+					$model->lat = $dataLocation->lat;
+					$model->lng = $dataLocation->lng;
+					$model->save( false );
+				}
+			}
 		}
 
 		return $this->render( 'update', [

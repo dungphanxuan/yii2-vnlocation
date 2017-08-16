@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
 use kartik\depdrop\DepDrop;
+use yii\web\View;
 
 /* @var $this yii\web\View */
 /* @var $model dungphanxuan\vnlocation\models\District */
@@ -11,6 +12,10 @@ use kartik\depdrop\DepDrop;
 /* @var $regions */
 /* @var $dataCity */
 
+$defaultKey = 'AIzaSyCNmTfwkNfWBggiPp060J19KlvDbDiJUS0';
+$gmapApiKey = isset(Yii::$app->params['gmapApiKey'])? Yii::$app->params['gmapApiKey'] : $defaultKey;
+
+$this->registerJsFile( 'https://maps.googleapis.com/maps/api/js?key=' . $gmapApiKey . '&callback=initMap', [ 'position' => View::POS_END ] );
 ?>
 
     <div class="district-form">
@@ -74,11 +79,35 @@ use kartik\depdrop\DepDrop;
 
         <hr class="b2r" style="margin-right:50px;margin-left:50px;">
 
-		<?php echo $form->field( $model, 'lat' )->textInput() ?>
+        <div class="form-group field-city-lat">
+            <label class="control-label col-sm-3 col-xs-3" for="city-lat"> Address Map </label>
+            <div class="col-sm-8 col-xs-8">
+                <div class="col-sm-3 nopleft">
+				    <?= Html::activeTextInput( $model, 'lat', [
+					    'class'        => 'form-control',
+					    'autocomplete' => 'off',
+					    'id'           => 'lat-value',
+					    'placeholder'  => 'Vĩ độ'
+				    ] ) ?>
+                    <p></p>
+				    <?= Html::activeTextInput( $model, 'lng', [
+					    'class'        => 'form-control',
+					    'autocomplete' => 'off',
+					    'id'           => 'lng-value',
+					    'placeholder'  => 'Kinh độ'
+				    ] ) ?>
+                </div>
+                <div class="col-sm-9">
+                    <div id="gmap" style="width: 100%;height: 200px">
 
-		<?php echo $form->field( $model, 'lng' )->textInput() ?>
+                    </div>
+                </div>
 
-		<?php echo $form->field( $model, 'status' )->checkbox() ?>
+                <div class="help-block help-block-error "></div>
+            </div>
+        </div>
+
+        <?php echo $form->field( $model, 'status' )->checkbox() ?>
 
         <hr class="b2r" style="margin-right:50px;margin-left:50px;">
 
@@ -127,5 +156,99 @@ $app_css = <<<CSS
 .btn200{
   width: 200px;
 }
+.gmap{
+height: 100%;
+width: 100%;
+}
+.nopleft{
+padding-left: 0 !important;
+}
 CSS;
 $this->registerCss( $app_css );
+
+$urlMapInfo = Url::to( 'map-info' );
+
+$js_form = <<<JS
+  $(document).on('keyup', '#city-address1', function() {
+      if($(this).val().length > 0){findAddress();}
+    });
+    //findAddress();
+    
+    function findAddress() {
+      var add =  $('#ward-fullname').val();
+      
+      $.ajax({
+               url : '$urlMapInfo',
+               type : 'POST',
+               data : {add:add},
+               dataType: 'json',
+               success : function(data) {
+                   if(data.success){
+                      $('#lat-value').val(data.body.lat);
+                      $('#lng-value').val(data.body.lng);
+                      changeViewCenterMap(data.body.lat, data.body.lng)
+                   }
+               }
+          });
+    }
+JS;
+
+$lat    = ( ( ! $model->isNewRecord && $model->lat ) || ( $model->isNewRecord && $model->lat ) ) ? $model->lat : 21.028511;
+$lng    = ( ( ! $model->isNewRecord && $model->lng ) || ( $model->isNewRecord && $model->lat ) ) ? $model->lng : 105.804817;
+$map_js = <<<JS
+    var map;
+    var markers = [];
+    
+    function initMap() {
+        var haightAshbury = {lat: $lat, lng: $lng};
+        map = new google.maps.Map(document.getElementById('gmap'), {
+            center: haightAshbury,
+            zoom: 11
+        });
+    
+        google.maps.event.addListener(map, 'click', function (event) {
+            //alert( "Latitude: "+event.latLng.lat()+" "+", longitude: "+event.latLng.lng() ); 
+            $("#lat-value").val(event.latLng.lat().toFixed(7));
+            $("#lng-value").val(event.latLng.lng().toFixed(7));
+            clearMarkers();
+            addMarker(event.latLng);
+        });
+        addMarker(haightAshbury);
+    }
+    
+    function addMarker(location) {
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            draggable: true
+        });
+    
+        google.maps.event.addListener(marker, 'dragend', function (event) {
+            $("#lat-value").val(event.latLng.lat().toFixed(7));
+            $("#lng-value").val(event.latLng.lng().toFixed(7));
+            clearMarkers();
+            addMarker(event.latLng);
+        });
+        markers.push(marker);
+    }
+    
+    function setMapOnAll(map) {
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
+        }
+    }
+    
+    function clearMarkers() {
+        setMapOnAll(null);
+    }
+    
+    function changeViewCenterMap(lat, lng) {
+        clearMarkers();
+        var newP = new google.maps.LatLng(lat, lng);
+        map.setCenter(newP);
+        addMarker({lat: lat, lng: lng});
+    }
+JS;
+
+$this->registerJs( $js_form );
+$this->registerJs( $map_js, View::POS_HEAD );
