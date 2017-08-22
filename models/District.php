@@ -2,7 +2,6 @@
 
 namespace dungphanxuan\vnlocation\models;
 
-use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
@@ -148,4 +147,10 @@ class District extends \yii\db\ActiveRecord {
 	public function getTotal() {
 		return $this->hasMany( Ward::className(), [ 'district_id' => 'id' ] )->count();
 	}
+
+    public static function getList(){
+        $allData = District::find()->all();
+        $dataItem = ArrayHelper::map($allData, 'id', 'name');
+        return $dataItem;
+    }
 }

@@ -13,7 +13,7 @@ use yii\bootstrap\ActiveForm;
 $defaultKey = 'AIzaSyCNmTfwkNfWBggiPp060J19KlvDbDiJUS0';
 $gmapApiKey = isset(Yii::$app->params['gmapApiKey'])? Yii::$app->params['gmapApiKey'] : $defaultKey;
 
-$this->registerJsFile( 'https://maps.googleapis.com/maps/api/js?key=' . $gmapApiKey . '&callback=initMap', [ 'position' => View::POS_END ] );
+$this->registerJsFile( 'https://maps.googleapis.com/maps/api/js?key=' . $gmapApiKey . '&callback=initMap&language=vi', [ 'position' => View::POS_END ] );
 
 ?>
 

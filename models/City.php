@@ -5,6 +5,7 @@ namespace dungphanxuan\vnlocation\models;
 use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "go_city".
@@ -137,5 +138,13 @@ class City extends \yii\db\ActiveRecord {
 	public function getTotal() {
 		return $this->hasMany( District::className(), [ 'city_id' => 'id' ] )->count();
 	}
+
+    public static function getList(){
+        $allData = City::find()
+            ->orderBy('priority desc')
+            ->all();
+        $dataItem = ArrayHelper::map($allData, 'id', 'name');
+        return $dataItem;
+    }
 
 }
