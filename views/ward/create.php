@@ -1,7 +1,5 @@
 <?php
 
-use yii\helpers\Html;
-
 
 /* @var $this yii\web\View */
 /* @var $model dungphanxuan\vnlocation\models\Ward */
@@ -10,18 +8,18 @@ use yii\helpers\Html;
 /* @var $districts */
 /* @var $dataDistrict */
 
-$this->title                   = 'Thêm mới Phường/Xã';
-$this->params['breadcrumbs'][] = [ 'label' => 'Wards', 'url' => [ 'index' ] ];
+$this->title = 'Thêm mới Phường/Xã';
+$this->params['breadcrumbs'][] = ['label' => 'Wards', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ward-create">
 
-	<?php echo $this->render( '_form', [
-		'model'        => $model,
-		'regions'      => $regions,
-		'dataCity'     => $dataCity,
-		'dataDistrict' => $dataDistrict,
-		'districts'    => $districts,
-	] ) ?>
+    <?php echo $this->render('_form', [
+        'model'        => $model,
+        'regions'      => $regions,
+        'dataCity'     => $dataCity,
+        'dataDistrict' => $dataDistrict,
+        'districts'    => $districts,
+    ]) ?>
 
 </div>

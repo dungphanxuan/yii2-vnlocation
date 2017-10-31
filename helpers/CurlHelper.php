@@ -26,304 +26,317 @@ namespace dungphanxuan\vnlocation\helpers;
 
 use Yii;
 use yii\base\Exception;
-use yii\helpers\Json;
-use yii\web\HttpException;
 use yii\helpers\Inflector;
+use yii\helpers\Json;
 
 /**
  * cURL class
  */
-class CurlHelper extends Inflector {
+class CurlHelper extends Inflector
+{
 
-	// ################################################ class vars // ################################################
-
-
-	/**
-	 * @var string
-	 * Holds response data right after sending a request.
-	 */
-	public $response = null;
-
-	/**
-	 * @var integer HTTP-Status Code
-	 * This value will hold HTTP-Status Code. False if request was not successful.
-	 */
-	public $responseCode = null;
-
-	/**
-	 * @var array HTTP-Status Code
-	 * Custom options holder
-	 */
-	private $_options = array();
+    // ################################################ class vars // ################################################
 
 
-	/**
-	 * @var object
-	 * Holds cURL-Handler
-	 */
-	private $_curl = null;
+    /**
+     * @var string
+     * Holds response data right after sending a request.
+     */
+    public $response = null;
+
+    /**
+     * @var integer HTTP-Status Code
+     * This value will hold HTTP-Status Code. False if request was not successful.
+     */
+    public $responseCode = null;
+
+    /**
+     * @var array HTTP-Status Code
+     * Custom options holder
+     */
+    private $_options = array();
 
 
-	/**
-	 * @var array default curl options
-	 * Default curl options
-	 */
-	private $_defaultOptions = array(
-		CURLOPT_USERAGENT      => 'Yii2-Curl-Agent',
-		CURLOPT_TIMEOUT        => 30,
-		CURLOPT_CONNECTTIMEOUT => 30,
-		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_HEADER         => false,
-	);
+    /**
+     * @var object
+     * Holds cURL-Handler
+     */
+    private $_curl = null;
 
 
-	// ############################################### class methods // ##############################################
-
-	/**
-	 * Start performing GET-HTTP-Request
-	 *
-	 * @param string $url
-	 * @param boolean $raw if response body contains JSON and should be decoded
-	 *
-	 * @return mixed response
-	 */
-	public function get( $url, $raw = true ) {
-		return $this->_httpRequest( 'GET', $url, $raw );
-	}
+    /**
+     * @var array default curl options
+     * Default curl options
+     */
+    private $_defaultOptions = array(
+        CURLOPT_USERAGENT      => 'Yii2-Curl-Agent',
+        CURLOPT_TIMEOUT        => 30,
+        CURLOPT_CONNECTTIMEOUT => 30,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HEADER         => false,
+    );
 
 
-	/**
-	 * Start performing HEAD-HTTP-Request
-	 *
-	 * @param string $url
-	 *
-	 * @return mixed response
-	 */
-	public function head( $url ) {
-		return $this->_httpRequest( 'HEAD', $url );
-	}
+    // ############################################### class methods // ##############################################
+
+    /**
+     * Start performing GET-HTTP-Request
+     *
+     * @param string $url
+     * @param boolean $raw if response body contains JSON and should be decoded
+     *
+     * @return mixed response
+     */
+    public function get($url, $raw = true)
+    {
+        return $this->_httpRequest('GET', $url, $raw);
+    }
 
 
-	/**
-	 * Start performing POST-HTTP-Request
-	 *
-	 * @param string $url
-	 * @param boolean $raw if response body contains JSON and should be decoded
-	 *
-	 * @return mixed response
-	 */
-	public function post( $url, $raw = true ) {
-		return $this->_httpRequest( 'POST', $url, $raw );
-	}
+    /**
+     * Start performing HEAD-HTTP-Request
+     *
+     * @param string $url
+     *
+     * @return mixed response
+     */
+    public function head($url)
+    {
+        return $this->_httpRequest('HEAD', $url);
+    }
 
 
-	/**
-	 * Start performing PUT-HTTP-Request
-	 *
-	 * @param string $url
-	 * @param boolean $raw if response body contains JSON and should be decoded
-	 *
-	 * @return mixed response
-	 */
-	public function put( $url, $raw = true ) {
-		return $this->_httpRequest( 'PUT', $url, $raw );
-	}
+    /**
+     * Start performing POST-HTTP-Request
+     *
+     * @param string $url
+     * @param boolean $raw if response body contains JSON and should be decoded
+     *
+     * @return mixed response
+     */
+    public function post($url, $raw = true)
+    {
+        return $this->_httpRequest('POST', $url, $raw);
+    }
 
 
-	/**
-	 * Start performing DELETE-HTTP-Request
-	 *
-	 * @param string $url
-	 * @param boolean $raw if response body contains JSON and should be decoded
-	 *
-	 * @return mixed response
-	 */
-	public function delete( $url, $raw = true ) {
-		return $this->_httpRequest( 'DELETE', $url, $raw );
-	}
+    /**
+     * Start performing PUT-HTTP-Request
+     *
+     * @param string $url
+     * @param boolean $raw if response body contains JSON and should be decoded
+     *
+     * @return mixed response
+     */
+    public function put($url, $raw = true)
+    {
+        return $this->_httpRequest('PUT', $url, $raw);
+    }
 
 
-	/**
-	 * Set curl option
-	 *
-	 * @param string $key
-	 * @param mixed $value
-	 *
-	 * @return $this
-	 */
-	public function setOption( $key, $value ) {
-		//set value
-		if ( in_array( $key, $this->_defaultOptions ) && $key !== CURLOPT_WRITEFUNCTION ) {
-			$this->_defaultOptions[ $key ] = $value;
-		} else {
-			$this->_options[ $key ] = $value;
-		}
-
-		//return self
-		return $this;
-	}
+    /**
+     * Start performing DELETE-HTTP-Request
+     *
+     * @param string $url
+     * @param boolean $raw if response body contains JSON and should be decoded
+     *
+     * @return mixed response
+     */
+    public function delete($url, $raw = true)
+    {
+        return $this->_httpRequest('DELETE', $url, $raw);
+    }
 
 
-	/**
-	 * Unset a single curl option
-	 *
-	 * @param string $key
-	 *
-	 * @return $this
-	 */
-	public function unsetOption( $key ) {
-		//reset a single option if its set already
-		if ( isset( $this->_options[ $key ] ) ) {
-			unset( $this->_options[ $key ] );
-		}
+    /**
+     * Set curl option
+     *
+     * @param string $key
+     * @param mixed $value
+     *
+     * @return $this
+     */
+    public function setOption($key, $value)
+    {
+        //set value
+        if (in_array($key, $this->_defaultOptions) && $key !== CURLOPT_WRITEFUNCTION) {
+            $this->_defaultOptions[$key] = $value;
+        } else {
+            $this->_options[$key] = $value;
+        }
 
-		return $this;
-	}
-
-
-	/**
-	 * Unset all curl option, excluding default options.
-	 *
-	 * @return $this
-	 */
-	public function unsetOptions() {
-		//reset all options
-		if ( isset( $this->_options ) ) {
-			$this->_options = array();
-		}
-
-		return $this;
-	}
+        //return self
+        return $this;
+    }
 
 
-	/**
-	 * Total reset of options, responses, etc.
-	 *
-	 * @return $this
-	 */
-	public function reset() {
-		if ( $this->_curl !== null ) {
-			curl_close( $this->_curl ); //stop curl
-		}
+    /**
+     * Unset a single curl option
+     *
+     * @param string $key
+     *
+     * @return $this
+     */
+    public function unsetOption($key)
+    {
+        //reset a single option if its set already
+        if (isset($this->_options[$key])) {
+            unset($this->_options[$key]);
+        }
 
-		//reset all options
-		if ( isset( $this->_options ) ) {
-			$this->_options = array();
-		}
-
-		//reset response & status code
-		$this->_curl        = null;
-		$this->response     = null;
-		$this->responseCode = null;
-
-		return $this;
-	}
+        return $this;
+    }
 
 
-	/**
-	 * Return a single option
-	 *
-	 * @param string|integer $key
-	 *
-	 * @return mixed|boolean
-	 */
-	public function getOption( $key ) {
-		//get merged options depends on default and user options
-		$mergesOptions = $this->getOptions();
+    /**
+     * Unset all curl option, excluding default options.
+     *
+     * @return $this
+     */
+    public function unsetOptions()
+    {
+        //reset all options
+        if (isset($this->_options)) {
+            $this->_options = array();
+        }
 
-		//return value or false if key is not set.
-		return isset( $mergesOptions[ $key ] ) ? $mergesOptions[ $key ] : false;
-	}
-
-
-	/**
-	 * Return merged curl options and keep keys!
-	 *
-	 * @return array
-	 */
-	public function getOptions() {
-		return $this->_options + $this->_defaultOptions;
-	}
+        return $this;
+    }
 
 
-	/**
-	 * Get curl info according to http://php.net/manual/de/function.curl-getinfo.php
-	 *
-	 * @return mixed
-	 */
-	public function getInfo( $opt = null ) {
-		if ( $this->_curl !== null && $opt === null ) {
-			return curl_getinfo( $this->_curl );
-		} elseif ( $this->_curl !== null && $opt !== null ) {
-			return curl_getinfo( $this->_curl, $opt );
-		} else {
-			return [];
-		}
-	}
+    /**
+     * Total reset of options, responses, etc.
+     *
+     * @return $this
+     */
+    public function reset()
+    {
+        if ($this->_curl !== null) {
+            curl_close($this->_curl); //stop curl
+        }
+
+        //reset all options
+        if (isset($this->_options)) {
+            $this->_options = array();
+        }
+
+        //reset response & status code
+        $this->_curl = null;
+        $this->response = null;
+        $this->responseCode = null;
+
+        return $this;
+    }
 
 
-	/**
-	 * Performs HTTP request
-	 *
-	 * @param string $method
-	 * @param string $url
-	 * @param boolean $raw if response body contains JSON and should be decoded -> helper.
-	 *
-	 * @throws Exception if request failed
-	 *
-	 * @return mixed
-	 */
-	private function _httpRequest( $method, $url, $raw = false ) {
-		//set request type and writer function
-		$this->setOption( CURLOPT_CUSTOMREQUEST, strtoupper( $method ) );
+    /**
+     * Return a single option
+     *
+     * @param string|integer $key
+     *
+     * @return mixed|boolean
+     */
+    public function getOption($key)
+    {
+        //get merged options depends on default and user options
+        $mergesOptions = $this->getOptions();
 
-		//check if method is head and set no body
-		if ( $method === 'HEAD' ) {
-			$this->setOption( CURLOPT_NOBODY, true );
-			$this->unsetOption( CURLOPT_WRITEFUNCTION );
-		}
+        //return value or false if key is not set.
+        return isset($mergesOptions[$key]) ? $mergesOptions[$key] : false;
+    }
 
-		//setup error reporting and profiling
-		Yii::trace( 'Start sending cURL-Request: ' . $url . '\n', __METHOD__ );
-		Yii::beginProfile( $method . ' ' . $url . '#' . md5( serialize( $this->getOption( CURLOPT_POSTFIELDS ) ) ), __METHOD__ );
 
-		/**
-		 * proceed curl
-		 */
-		$this->_curl = curl_init( $url );
-		curl_setopt_array( $this->_curl, $this->getOptions() );
-		$body = curl_exec( $this->_curl );
-		curl_setopt( $this->_curl, CURLOPT_SSL_VERIFYPEER, false );
-		//check if curl was successful
-		if ( $body === false ) {
-			switch ( curl_errno( $this->_curl ) ) {
+    /**
+     * Return merged curl options and keep keys!
+     *
+     * @return array
+     */
+    public function getOptions()
+    {
+        return $this->_options + $this->_defaultOptions;
+    }
 
-				case 7:
-					$this->responseCode = 'timeout';
 
-					return false;
-					break;
+    /**
+     * Get curl info according to http://php.net/manual/de/function.curl-getinfo.php
+     *
+     * @return mixed
+     */
+    public function getInfo($opt = null)
+    {
+        if ($this->_curl !== null && $opt === null) {
+            return curl_getinfo($this->_curl);
+        } elseif ($this->_curl !== null && $opt !== null) {
+            return curl_getinfo($this->_curl, $opt);
+        } else {
+            return [];
+        }
+    }
 
-				default:
-					throw new Exception( 'curl request failed: ' . curl_error( $this->_curl ), curl_errno( $this->_curl ) );
-					break;
-			}
-		}
 
-		//retrieve response code
-		$this->responseCode = curl_getinfo( $this->_curl, CURLINFO_HTTP_CODE );
-		$this->response     = $body;
+    /**
+     * Performs HTTP request
+     *
+     * @param string $method
+     * @param string $url
+     * @param boolean $raw if response body contains JSON and should be decoded -> helper.
+     *
+     * @throws Exception if request failed
+     *
+     * @return mixed
+     */
+    private function _httpRequest($method, $url, $raw = false)
+    {
+        //set request type and writer function
+        $this->setOption(CURLOPT_CUSTOMREQUEST, strtoupper($method));
 
-		//end yii debug profile
-		Yii::endProfile( $method . ' ' . $url . '#' . md5( serialize( $this->getOption( CURLOPT_POSTFIELDS ) ) ), __METHOD__ );
+        //check if method is head and set no body
+        if ($method === 'HEAD') {
+            $this->setOption(CURLOPT_NOBODY, true);
+            $this->unsetOption(CURLOPT_WRITEFUNCTION);
+        }
 
-		//check responseCode and return data/status
-		if ( $this->getOption( CURLOPT_CUSTOMREQUEST ) === 'HEAD' ) {
-			return true;
-		} else {
-			$this->response = $raw ? $this->response : Json::decode( $this->response );
+        //setup error reporting and profiling
+        Yii::trace('Start sending cURL-Request: ' . $url . '\n', __METHOD__);
+        Yii::beginProfile($method . ' ' . $url . '#' . md5(serialize($this->getOption(CURLOPT_POSTFIELDS))), __METHOD__);
 
-			return $this->response;
-		}
-	}
+        /**
+         * proceed curl
+         */
+        $this->_curl = curl_init($url);
+        curl_setopt_array($this->_curl, $this->getOptions());
+        $body = curl_exec($this->_curl);
+        curl_setopt($this->_curl, CURLOPT_SSL_VERIFYPEER, false);
+        //check if curl was successful
+        if ($body === false) {
+            switch (curl_errno($this->_curl)) {
+
+                case 7:
+                    $this->responseCode = 'timeout';
+
+                    return false;
+                    break;
+
+                default:
+                    throw new Exception('curl request failed: ' . curl_error($this->_curl), curl_errno($this->_curl));
+                    break;
+            }
+        }
+
+        //retrieve response code
+        $this->responseCode = curl_getinfo($this->_curl, CURLINFO_HTTP_CODE);
+        $this->response = $body;
+
+        //end yii debug profile
+        Yii::endProfile($method . ' ' . $url . '#' . md5(serialize($this->getOption(CURLOPT_POSTFIELDS))), __METHOD__);
+
+        //check responseCode and return data/status
+        if ($this->getOption(CURLOPT_CUSTOMREQUEST) === 'HEAD') {
+            return true;
+        } else {
+            $this->response = $raw ? $this->response : Json::decode($this->response);
+
+            return $this->response;
+        }
+    }
 }

@@ -3,7 +3,6 @@
 namespace dungphanxuan\vnlocation\models;
 
 use trntv\filekit\behaviors\UploadBehavior;
-use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
 
@@ -29,91 +28,98 @@ use yii\helpers\ArrayHelper;
  *
  * @property District $district
  */
-class Ward extends \yii\db\ActiveRecord {
+class Ward extends \yii\db\ActiveRecord
+{
 
-	public $region_id;
+    public $region_id;
 
-	public $city_id;
-	/**
-	 * @var array
-	 */
-	public $image;
+    public $city_id;
+    /**
+     * @var array
+     */
+    public $image;
 
-	/**
-	 * @inheritdoc
-	 */
-	public static function tableName() {
-		return 'go_ward';
-	}
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'go_ward';
+    }
 
-	public function behaviors() {
-		return [
-			TimestampBehavior::className()
-		];
-	}
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className()
+        ];
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function rules() {
-		return [
-			[ [ 'district_id', 'name' ], 'required' ],
-			[ [ 'district_id', 'priority', 'status', 'created_at', 'updated_at' ], 'integer' ],
-			[ [ 'lat', 'lng' ], 'number' ],
-			[ [ 'code_vtp', 'code_spl' ], 'string', 'max' => 32 ],
-			[ [ 'slug', 'fullname', 'name' ], 'string', 'max' => 128 ],
-			[ [ 'short_name' ], 'string', 'max' => 64 ],
-			[ [ 'image_base_url', 'image_path' ], 'string', 'max' => 255 ],
-			[
-				[ 'district_id' ],
-				'exist',
-				'skipOnError'     => true,
-				'targetClass'     => District::className(),
-				'targetAttribute' => [ 'district_id' => 'id' ]
-			]
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['district_id', 'name'], 'required'],
+            [['district_id', 'priority', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['lat', 'lng'], 'number'],
+            [['code_vtp', 'code_spl'], 'string', 'max' => 32],
+            [['slug', 'fullname', 'name'], 'string', 'max' => 128],
+            [['short_name'], 'string', 'max' => 64],
+            [['image_base_url', 'image_path'], 'string', 'max' => 255],
+            [
+                ['district_id'],
+                'exist',
+                'skipOnError'     => true,
+                'targetClass'     => District::className(),
+                'targetAttribute' => ['district_id' => 'id']
+            ]
+        ];
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels() {
-		return [
-			'id'             => 'ID',
-			'region_id'      => 'Region',
-			'city_id'        => 'City',
-			'district_id'    => 'District',
-			'name'           => 'Ward Name',
-			'slug'           => 'Slug',
-			'fullname'       => 'Fullname',
-			'short_name'     => 'Short Name',
-			'code_vtp'       => 'Code Vtp',
-			'code_spl'       => 'Code Spl',
-			'priority'       => 'Priority',
-			'image_base_url' => 'Image Base Url',
-			'image_path'     => 'Image Path',
-			'lat'            => 'Lat',
-			'lng'            => 'Lng',
-			'status'         => 'Status',
-			'created_at'     => 'Created At',
-			'updated_at'     => 'Updated At',
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id'             => 'ID',
+            'region_id'      => 'Region',
+            'city_id'        => 'City',
+            'district_id'    => 'District',
+            'name'           => 'Ward Name',
+            'slug'           => 'Slug',
+            'fullname'       => 'Fullname',
+            'short_name'     => 'Short Name',
+            'code_vtp'       => 'Code Vtp',
+            'code_spl'       => 'Code Spl',
+            'priority'       => 'Priority',
+            'image_base_url' => 'Image Base Url',
+            'image_path'     => 'Image Path',
+            'lat'            => 'Lat',
+            'lng'            => 'Lng',
+            'status'         => 'Status',
+            'created_at'     => 'Created At',
+            'updated_at'     => 'Updated At',
+        ];
+    }
 
-	/**
-	 * @return \yii\db\ActiveQuery
-	 */
-	public function getDistrict() {
-		return $this->hasOne( District::className(), [ 'id' => 'district_id' ] );
-	}
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDistrict()
+    {
+        return $this->hasOne(District::className(), ['id' => 'district_id']);
+    }
 
-	public static function getWards( $distric_id ) {
-		$dataModel = Ward::find()
-		                 ->where( [ 'district_id' => $distric_id ] )
-		                 ->asArray()
-		                 ->all();
-		$data      = ArrayHelper::map( $dataModel, 'id', 'name' );
+    public static function getWards($distric_id)
+    {
+        $dataModel = Ward::find()
+            ->where(['district_id' => $distric_id])
+            ->asArray()
+            ->all();
+        $data = ArrayHelper::map($dataModel, 'id', 'name');
 
-		return $data;
-	}
+        return $data;
+    }
 }

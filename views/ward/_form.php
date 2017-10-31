@@ -1,9 +1,9 @@
 <?php
 
+use kartik\depdrop\DepDrop;
+use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\bootstrap\ActiveForm;
-use kartik\depdrop\DepDrop;
 use yii\web\View;
 
 /* @var $this yii\web\View */
@@ -15,73 +15,73 @@ use yii\web\View;
 /* @var $dataDistrict */
 
 $defaultKey = 'AIzaSyCNmTfwkNfWBggiPp060J19KlvDbDiJUS0';
-$gmapApiKey = isset( Yii::$app->params['gmapApiKey'] ) ? Yii::$app->params['gmapApiKey'] : $defaultKey;
+$gmapApiKey = isset(Yii::$app->params['gmapApiKey']) ? Yii::$app->params['gmapApiKey'] : $defaultKey;
 
-$this->registerJsFile( 'https://maps.googleapis.com/maps/api/js?key=' . $gmapApiKey . '&callback=initMap&language=vi', [ 'position' => View::POS_END ] );
+$this->registerJsFile('https://maps.googleapis.com/maps/api/js?key=' . $gmapApiKey . '&callback=initMap&language=vi', ['position' => View::POS_END]);
 
 ?>
 
     <div class="ward-form">
 
-		<?php $form = ActiveForm::begin( [
-			'layout' => 'horizontal',
-		] ); ?>
+        <?php $form = ActiveForm::begin([
+            'layout' => 'horizontal',
+        ]); ?>
 
-		<?php echo $form->errorSummary( $model, [
-			'class'  => 'alert alert-warning alert-dismissible',
-			'header' => '
+        <?php echo $form->errorSummary($model, [
+            'class'  => 'alert alert-warning alert-dismissible',
+            'header' => '
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
     <h4><i class="icon fa fa-warning"></i> Vui lòng sửa các lỗi sau!</h4>'
-		] ); ?>
+        ]); ?>
 
-		<?php echo $form->field( $model, 'region_id' )->dropDownList( \yii\helpers\ArrayHelper::map(
-			$regions,
-			'id',
-			'title'
-		), [ 'prompt' => 'Chọn miền...', 'id' => 'cregion-id' ] )->hint( 'Chọn vùng miền' ) ?>
+        <?php echo $form->field($model, 'region_id')->dropDownList(\yii\helpers\ArrayHelper::map(
+            $regions,
+            'id',
+            'title'
+        ), ['prompt' => 'Chọn miền...', 'id' => 'cregion-id'])->hint('Chọn vùng miền') ?>
 
-		<?php
-		echo $form->field( $model, 'city_id' )->widget( DepDrop::classname(), [
-			'options'        => [ 'id' => 'ccity-id' ],
-			'type'           => DepDrop::TYPE_SELECT2,
-			'data'           => $dataCity,
-			'select2Options' => [ 'pluginOptions' => [ 'allowClear' => true ] ],
-			'pluginOptions'  => [
-				'depends'     => [ 'cregion-id' ],
-				'placeholder' => 'Chọn Tỉnh/Thành Phố...',
-				'url'         => Url::to( [ '/go/city/subcat' ] )
-			]
-		] );
-		?>
+        <?php
+        echo $form->field($model, 'city_id')->widget(DepDrop::classname(), [
+            'options'        => ['id' => 'ccity-id'],
+            'type'           => DepDrop::TYPE_SELECT2,
+            'data'           => $dataCity,
+            'select2Options' => ['pluginOptions' => ['allowClear' => true]],
+            'pluginOptions'  => [
+                'depends'     => ['cregion-id'],
+                'placeholder' => 'Chọn Tỉnh/Thành Phố...',
+                'url'         => Url::to(['/go/city/subcat'])
+            ]
+        ]);
+        ?>
 
-		<?php
-		echo $form->field( $model, 'district_id' )->widget( DepDrop::classname(), [
-			'options'        => [ 'id' => 'district-id' ],
-			'type'           => DepDrop::TYPE_SELECT2,
-			'data'           => $dataDistrict,
-			'select2Options' => [ 'pluginOptions' => [ 'allowClear' => true ] ],
-			'pluginOptions'  => [
-				'depends'     => [ 'ccity-id' ],
-				'placeholder' => 'Chọn Quận/Huyện...',
-				'url'         => Url::to( [ '/go/district/subcat' ] )
-			]
-		] );
-		?>
+        <?php
+        echo $form->field($model, 'district_id')->widget(DepDrop::classname(), [
+            'options'        => ['id' => 'district-id'],
+            'type'           => DepDrop::TYPE_SELECT2,
+            'data'           => $dataDistrict,
+            'select2Options' => ['pluginOptions' => ['allowClear' => true]],
+            'pluginOptions'  => [
+                'depends'     => ['ccity-id'],
+                'placeholder' => 'Chọn Quận/Huyện...',
+                'url'         => Url::to(['/go/district/subcat'])
+            ]
+        ]);
+        ?>
 
 
-		<?php echo $form->field( $model, 'name' )->textInput( [ 'maxlength' => true ] ) ?>
+        <?php echo $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-		<?php echo $form->field( $model, 'slug' )->textInput( [ 'maxlength' => true ] ) ?>
+        <?php echo $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
-		<?php echo $form->field( $model, 'fullname' )->textInput( [ 'maxlength' => true ] ) ?>
+        <?php echo $form->field($model, 'fullname')->textInput(['maxlength' => true]) ?>
 
-		<?php echo $form->field( $model, 'short_name' )->textInput( [ 'maxlength' => true ] ) ?>
+        <?php echo $form->field($model, 'short_name')->textInput(['maxlength' => true]) ?>
 
-		<?php echo $form->field( $model, 'code_vtp' )->textInput( [ 'maxlength' => true ] ) ?>
+        <?php echo $form->field($model, 'code_vtp')->textInput(['maxlength' => true]) ?>
 
-		<?php echo $form->field( $model, 'code_spl' )->textInput( [ 'maxlength' => true ] ) ?>
+        <?php echo $form->field($model, 'code_spl')->textInput(['maxlength' => true]) ?>
 
-		<?php echo $form->field( $model, 'priority' )->textInput() ?>
+        <?php echo $form->field($model, 'priority')->textInput() ?>
 
         <hr class="b2r" style="margin-right:50px;margin-left:50px;">
 
@@ -89,19 +89,19 @@ $this->registerJsFile( 'https://maps.googleapis.com/maps/api/js?key=' . $gmapApi
             <label class="control-label col-sm-3 col-xs-3" for="city-lat"> Address Map </label>
             <div class="col-sm-8 col-xs-8">
                 <div class="col-sm-3 nopleft">
-					<?= Html::activeTextInput( $model, 'lat', [
-						'class'        => 'form-control',
-						'autocomplete' => 'off',
-						'id'           => 'lat-value',
-						'placeholder'  => 'Vĩ độ'
-					] ) ?>
+                    <?= Html::activeTextInput($model, 'lat', [
+                        'class'        => 'form-control',
+                        'autocomplete' => 'off',
+                        'id'           => 'lat-value',
+                        'placeholder'  => 'Vĩ độ'
+                    ]) ?>
                     <p></p>
-					<?= Html::activeTextInput( $model, 'lng', [
-						'class'        => 'form-control',
-						'autocomplete' => 'off',
-						'id'           => 'lng-value',
-						'placeholder'  => 'Kinh độ'
-					] ) ?>
+                    <?= Html::activeTextInput($model, 'lng', [
+                        'class'        => 'form-control',
+                        'autocomplete' => 'off',
+                        'id'           => 'lng-value',
+                        'placeholder'  => 'Kinh độ'
+                    ]) ?>
                 </div>
                 <div class="col-sm-9">
                     <div id="gmap" style="width: 100%;height: 200px">
@@ -113,43 +113,43 @@ $this->registerJsFile( 'https://maps.googleapis.com/maps/api/js?key=' . $gmapApi
             </div>
         </div>
 
-		<?php echo $form->field( $model, 'status' )->checkbox() ?>
+        <?php echo $form->field($model, 'status')->checkbox() ?>
 
         <hr class="b2r" style="margin-right:50px;margin-left:50px;">
 
         <div class="form-group">
             <div class="col-sm-<?= $model->isNewRecord ? '3' : '1' ?> col-xs-2"></div>
             <div class="col-sm-3 col-xs-4">
-				<?php
-				echo Html::a( '<span class="glyphicon glyphicon-arrow-left"></span>' . 'Back',
-					[ 'index' ], [ 'class' => 'btn btn-default btn200' ] );
-				?>
+                <?php
+                echo Html::a('<span class="glyphicon glyphicon-arrow-left"></span>' . 'Back',
+                    ['index'], ['class' => 'btn btn-default btn200']);
+                ?>
             </div>
             <div class="col-sm-3 col-xs-4">
-				<?php echo Html::submitButton( $model->isNewRecord ? 'Create' :
-					'Update', [
-					'class' => $model->isNewRecord ? 'btn btn-success btn200' : 'btn btn-primary
+                <?php echo Html::submitButton($model->isNewRecord ? 'Create' :
+                    'Update', [
+                    'class' => $model->isNewRecord ? 'btn btn-success btn200' : 'btn btn-primary
             btn200'
-				] ) ?>
+                ]) ?>
             </div>
             <div class="col-sm-3 col-xs-2">
-				<?php
-				if ( ! $model->isNewRecord ) {
-					echo Html::a( 'Delete', [ 'delete', 'id' => $model->id ],
-						[
-							'class' => 'btn btn-warning btn200 bold',
-							'data'  => [
-								'confirm' => 'Are you sure you want to delete?',
-								'method'  => 'post',
-							]
-						] );
-				}
-				?>
+                <?php
+                if (!$model->isNewRecord) {
+                    echo Html::a('Delete', ['delete', 'id' => $model->id],
+                        [
+                            'class' => 'btn btn-warning btn200 bold',
+                            'data'  => [
+                                'confirm' => 'Are you sure you want to delete?',
+                                'method'  => 'post',
+                            ]
+                        ]);
+                }
+                ?>
             </div>
         </div>
 
 
-		<?php ActiveForm::end(); ?>
+        <?php ActiveForm::end(); ?>
 
     </div>
 <?php
@@ -170,9 +170,9 @@ width: 100%;
 padding-left: 0 !important;
 }
 CSS;
-$this->registerCss( $app_css );
+$this->registerCss($app_css);
 
-$urlMapInfo = Url::to( 'map-info' );
+$urlMapInfo = Url::to('map-info');
 
 $js_form = <<<JS
   $(document).on('keyup', '#city-address1', function() {
@@ -199,8 +199,8 @@ $js_form = <<<JS
     }
 JS;
 
-$lat    = ( ( ! $model->isNewRecord && $model->lat ) || ( $model->isNewRecord && $model->lat ) ) ? $model->lat : 21.028511;
-$lng    = ( ( ! $model->isNewRecord && $model->lng ) || ( $model->isNewRecord && $model->lat ) ) ? $model->lng : 105.804817;
+$lat = ((!$model->isNewRecord && $model->lat) || ($model->isNewRecord && $model->lat)) ? $model->lat : 21.028511;
+$lng = ((!$model->isNewRecord && $model->lng) || ($model->isNewRecord && $model->lat)) ? $model->lng : 105.804817;
 $map_js = <<<JS
     var map;
     var markers = [];
@@ -256,5 +256,5 @@ $map_js = <<<JS
     }
 JS;
 
-$this->registerJs( $js_form );
-$this->registerJs( $map_js, View::POS_HEAD );
+$this->registerJs($js_form);
+$this->registerJs($map_js, View::POS_HEAD);

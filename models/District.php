@@ -2,7 +2,6 @@
 
 namespace dungphanxuan\vnlocation\models;
 
-use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
 
@@ -35,122 +34,133 @@ use yii\helpers\ArrayHelper;
  * @property City $city
  * @property Ward[] $goWards
  */
-class District extends \yii\db\ActiveRecord {
+class District extends \yii\db\ActiveRecord
+{
 
-	/**
-	 * @var array
-	 */
-	public $image;
+    /**
+     * @var array
+     */
+    public $image;
 
-	public $region_id;
-	public $total_ward;
+    public $region_id;
+    public $total_ward;
 
-	/**
-	 * @inheritdoc
-	 */
-	public static function tableName() {
-		return 'go_district';
-	}
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'go_district';
+    }
 
-	public function behaviors() {
-		return [
-			TimestampBehavior::className()
-		];
-	}
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className()
+        ];
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function rules() {
-		return [
-			[ [ 'city_id', 'name', 'code' ], 'required' ],
-			[
-				[ 'city_id', 'kind_from', 'kind_to', 'allow', 'priority', 'status', 'created_at', 'updated_at' ],
-				'integer'
-			],
-			[ [ 'lat', 'lng' ], 'number' ],
-			[
-				[ 'name', 'slug', 'short_name', 'code', 'code_ghn', 'code_vtp', 'code_kerry' ],
-				'string',
-				'max' => 32
-			],
-			[ [ 'code_spl', 'full_name' ], 'string', 'max' => 64 ],
-			[ [ 'image_base_url', 'image_path' ], 'string', 'max' => 255 ],
-			[
-				[ 'city_id' ],
-				'exist',
-				'skipOnError'     => true,
-				'targetClass'     => City::className(),
-				'targetAttribute' => [ 'city_id' => 'id' ]
-			]
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['city_id', 'name', 'code'], 'required'],
+            [
+                ['city_id', 'kind_from', 'kind_to', 'allow', 'priority', 'status', 'created_at', 'updated_at'],
+                'integer'
+            ],
+            [['lat', 'lng'], 'number'],
+            [
+                ['name', 'slug', 'short_name', 'code', 'code_ghn', 'code_vtp', 'code_kerry'],
+                'string',
+                'max' => 32
+            ],
+            [['code_spl', 'full_name'], 'string', 'max' => 64],
+            [['image_base_url', 'image_path'], 'string', 'max' => 255],
+            [
+                ['city_id'],
+                'exist',
+                'skipOnError'     => true,
+                'targetClass'     => City::className(),
+                'targetAttribute' => ['city_id' => 'id']
+            ]
+        ];
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels() {
-		return [
-			'id'             => 'ID',
-			'region_id'      => 'Region',
-			'city_id'        => 'City',
-			'name'           => 'District Name',
-			'slug'           => 'Slug',
-			'full_name'      => 'Full Name',
-			'short_name'     => 'Short Name',
-			'code'           => 'Code',
-			'code_ghn'       => 'Code Ghn',
-			'code_vtp'       => 'Code Vtp',
-			'code_kerry'     => 'Code Kerry',
-			'code_spl'       => 'Code Spl',
-			'kind_from'      => 'Kind From',
-			'kind_to'        => 'Kind To',
-			'allow'          => 'Allow',
-			'priority'       => 'Priority',
-			'image_base_url' => 'Image Base Url',
-			'image_path'     => 'Image Path',
-			'lat'            => 'Lat',
-			'lng'            => 'Lng',
-			'status'         => 'Status',
-			'created_at'     => 'Created At',
-			'updated_at'     => 'Updated At',
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id'             => 'ID',
+            'region_id'      => 'Region',
+            'city_id'        => 'City',
+            'name'           => 'District Name',
+            'slug'           => 'Slug',
+            'full_name'      => 'Full Name',
+            'short_name'     => 'Short Name',
+            'code'           => 'Code',
+            'code_ghn'       => 'Code Ghn',
+            'code_vtp'       => 'Code Vtp',
+            'code_kerry'     => 'Code Kerry',
+            'code_spl'       => 'Code Spl',
+            'kind_from'      => 'Kind From',
+            'kind_to'        => 'Kind To',
+            'allow'          => 'Allow',
+            'priority'       => 'Priority',
+            'image_base_url' => 'Image Base Url',
+            'image_path'     => 'Image Path',
+            'lat'            => 'Lat',
+            'lng'            => 'Lng',
+            'status'         => 'Status',
+            'created_at'     => 'Created At',
+            'updated_at'     => 'Updated At',
+        ];
+    }
 
-	/**
-	 * @return \yii\db\ActiveQuery
-	 */
-	public function getCity() {
-		return $this->hasOne( City::className(), [ 'id' => 'city_id' ] );
-	}
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCity()
+    {
+        return $this->hasOne(City::className(), ['id' => 'city_id']);
+    }
 
-	/**
-	 * @return \yii\db\ActiveQuery
-	 */
-	public function getGoWards() {
-		return $this->hasMany( Ward::className(), [ 'district_id' => 'id' ] );
-	}
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getGoWards()
+    {
+        return $this->hasMany(Ward::className(), ['district_id' => 'id']);
+    }
 
-	public static function getDistricts( $city_id ) {
-		$dataModel = District::find()
-		                     ->where( [ 'city_id' => $city_id ] )
-		                     ->asArray()
-		                     ->all();
-		$data      = ArrayHelper::map( $dataModel, 'id', 'name' );
+    public static function getDistricts($city_id)
+    {
+        $dataModel = District::find()
+            ->where(['city_id' => $city_id])
+            ->asArray()
+            ->all();
+        $data = ArrayHelper::map($dataModel, 'id', 'name');
 
-		return $data;
-	}
+        return $data;
+    }
 
-	/*
-	* Get total video of category
-	* */
-	public function getTotal() {
-		return $this->hasMany( Ward::className(), [ 'district_id' => 'id' ] )->count();
-	}
+    /*
+    * Get total video of category
+    * */
+    public function getTotal()
+    {
+        return $this->hasMany(Ward::className(), ['district_id' => 'id'])->count();
+    }
 
-    public static function getList(){
+    public static function getList()
+    {
         $allData = District::find()->all();
         $dataItem = ArrayHelper::map($allData, 'id', 'name');
+
         return $dataItem;
     }
 }

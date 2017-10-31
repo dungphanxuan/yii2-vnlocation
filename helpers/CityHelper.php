@@ -9,19 +9,20 @@ namespace dungphanxuan\vnlocation\helpers;
  * Time: 11:30 AM
  */
 use dungphanxuan\vnlocation\models\City;
-use Yii;
 use yii\helpers\Inflector;
 
 
-class CityHelper extends Inflector {
+class CityHelper extends Inflector
+{
 
-	/*
-	 * Get Detail
-	 * */
-	public static function getDetail( $id ) {
-		/** @var City $modelItem */
-		$modelItem = City::find()->where( [ 'id' => $id ] )->asArray()->one();
+    /*
+     * Get Detail
+     * */
+    public static function getDetail($id)
+    {
+        /** @var City $modelItem */
+        $modelItem = City::find()->where(['id' => $id])->asArray()->one();
 
-		return $modelItem;
-	}
+        return $modelItem;
+    }
 }
