@@ -40,7 +40,7 @@ class WardSearch extends Ward {
 	 * @return ActiveDataProvider
 	 */
 	public function search( $params ) {
-		$query = Ward::find();
+        $query = Ward::find()->with('district');
 
 		$dataProvider = new ActiveDataProvider( [
 			'query'      => $query,

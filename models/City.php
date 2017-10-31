@@ -2,7 +2,6 @@
 
 namespace dungphanxuan\vnlocation\models;
 
-use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
@@ -146,5 +145,4 @@ class City extends \yii\db\ActiveRecord {
         $dataItem = ArrayHelper::map($allData, 'id', 'name');
         return $dataItem;
     }
-
 }

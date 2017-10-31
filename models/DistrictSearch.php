@@ -55,7 +55,7 @@ class DistrictSearch extends District {
 	 * @return ActiveDataProvider
 	 */
 	public function search( $params ) {
-		$query = District::find();
+        $query = District::find()->with(['city']);
 
 		$dataProvider = new ActiveDataProvider( [
 			'query' => $query,
