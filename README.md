@@ -74,3 +74,8 @@ Run:
  - Init District
  - Init Ward
  - Seed Data
+ 
+ ## Screenshots
+ 
+ 
+[Demo Image](https://goo.gl/iVVEpS)
