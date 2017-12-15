@@ -66,6 +66,10 @@ Run:
 ./yii location-import
 ```
 
+## Demo Location
+
+Access router **/go/demo-location** to see result
+ 
 ## Todo 
 
  - Init Migrate
