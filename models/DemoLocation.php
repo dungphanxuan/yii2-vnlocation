@@ -22,7 +22,7 @@ use yii\behaviors\TimestampBehavior;
  * @property int $created_by
  * @property int $updated_by
  */
-class DemoLocation extends \yii\db\ActiveRecord
+class DemoLocation extends BaseModel
 {
     /**
      * @inheritdoc

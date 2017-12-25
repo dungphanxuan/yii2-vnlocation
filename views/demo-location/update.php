@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model dungphanxuan\vnlocation\models\DemoLocation */
 
-$this->title = 'Update : {nameAttribute}';
+$this->title = 'Update : ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Demo Locations', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';

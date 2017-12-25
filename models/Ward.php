@@ -28,7 +28,7 @@ use yii\helpers\ArrayHelper;
  *
  * @property District $district
  */
-class Ward extends \yii\db\ActiveRecord
+class Ward extends BaseModel
 {
 
     public $region_id;

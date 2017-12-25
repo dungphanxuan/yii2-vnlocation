@@ -31,7 +31,7 @@ use yii\helpers\ArrayHelper;
  * @property GoRegion $region
  * @property District[] $goDistricts
  */
-class City extends \yii\db\ActiveRecord
+class City extends BaseModel
 {
 
     public $total_district;

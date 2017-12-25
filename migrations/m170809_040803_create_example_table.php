@@ -5,7 +5,7 @@ use yii\db\Migration;
 /**
  * Handles the creation of table `ward`.
  */
-class m170809_040803_create_example_table extends Migration
+class m170809_040803_create_example_table extends \dungphanxuan\vnlocation\migrations\BaseMigration
 {
     /**
      * @inheritdoc

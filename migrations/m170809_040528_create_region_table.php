@@ -5,7 +5,7 @@ use yii\db\Migration;
 /**
  * Handles the creation of table `region`.
  */
-class m170809_040528_create_region_table extends Migration
+class m170809_040528_create_region_table extends \dungphanxuan\vnlocation\migrations\BaseMigration
 {
     /**
      * @inheritdoc

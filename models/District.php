@@ -34,7 +34,7 @@ use yii\helpers\ArrayHelper;
  * @property City $city
  * @property Ward[] $goWards
  */
-class District extends \yii\db\ActiveRecord
+class District extends BaseModel
 {
 
     /**

@@ -45,7 +45,7 @@ use kartik\depdrop\DepDrop;
                 'pluginOptions'  => [
                     'depends'     => ['ccity-id'],
                     'placeholder' => 'Chọn Quận/Huyện...',
-                    'url'         => Url::to(['/go/district/subcat'])
+                    'url'         => Url::to(['/go/ajax/district-subcat'])
                 ]
             ]);
             ?>
@@ -61,7 +61,7 @@ use kartik\depdrop\DepDrop;
                 'pluginOptions'  => [
                     'depends'     => ['cdistrict-id'],
                     'placeholder' => 'Chọn Phường/Xã...',
-                    'url'         => Url::to(['/go/ward/subcat'])
+                    'url'         => Url::to(['/go/ajax/ward-subcat'])
                 ]
             ]);
             ?>

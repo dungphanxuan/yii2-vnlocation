@@ -18,7 +18,7 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property City[] $goCities
  */
-class GoRegion extends \yii\db\ActiveRecord
+class GoRegion extends BaseModel
 {
 
     public $total_city;
