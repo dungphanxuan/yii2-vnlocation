@@ -24,7 +24,7 @@ class DemoLocationController extends Controller
     {
         return [
             'verbs' => [
-                'class'   => VerbFilter::className(),
+                'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
                 ],
@@ -42,7 +42,7 @@ class DemoLocationController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel'  => $searchModel,
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -77,10 +77,10 @@ class DemoLocationController extends Controller
         }
 
         return $this->render('create', [
-            'model'        => $model,
-            'cities'       => City::find()->orderBy('priority desc')->all(),
+            'model' => $model,
+            'cities' => City::find()->orderBy('priority desc')->all(),
             'dataDistrict' => $dataDistrict,
-            'dataWard'     => $dataWard,
+            'dataWard' => $dataWard,
         ]);
     }
 
@@ -105,10 +105,10 @@ class DemoLocationController extends Controller
 
 
         return $this->render('update', [
-            'model'        => $model,
-            'cities'       => City::find()->orderBy('priority desc')->all(),
+            'model' => $model,
+            'cities' => City::find()->orderBy('priority desc')->all(),
             'dataDistrict' => $dataDistrict,
-            'dataWard'     => $dataWard,
+            'dataWard' => $dataWard,
         ]);
     }
 

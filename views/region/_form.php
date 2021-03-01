@@ -15,7 +15,7 @@ use yii\helpers\Html;
         ]); ?>
 
         <?php echo $form->errorSummary($model, [
-            'class'  => 'alert alert-warning alert-dismissible',
+            'class' => 'alert alert-warning alert-dismissible',
             'header' => '
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
     <h4><i class="icon fa fa-warning"></i> Vui lòng sửa các lỗi sau!</h4>'
@@ -50,9 +50,9 @@ use yii\helpers\Html;
                     echo Html::a('Delete', ['delete', 'id' => $model->id],
                         [
                             'class' => 'btn btn-warning btn200 bold',
-                            'data'  => [
+                            'data' => [
                                 'confirm' => 'Are you sure you want to delete?',
-                                'method'  => 'post',
+                                'method' => 'post',
                             ]
                         ]);
                 }

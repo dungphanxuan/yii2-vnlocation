@@ -50,8 +50,8 @@ class GoRegionSearch extends GoRegion
         }
 
         $query->andFilterWhere([
-            'id'         => $this->id,
-            'status'     => $this->status,
+            'id' => $this->id,
+            'status' => $this->status,
             'created_at' => $this->created_at,
         ]);
 

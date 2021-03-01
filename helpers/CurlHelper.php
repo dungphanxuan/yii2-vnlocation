@@ -69,11 +69,11 @@ class CurlHelper extends Inflector
      * Default curl options
      */
     private $_defaultOptions = array(
-        CURLOPT_USERAGENT      => 'Yii2-Curl-Agent',
-        CURLOPT_TIMEOUT        => 30,
+        CURLOPT_USERAGENT => 'Yii2-Curl-Agent',
+        CURLOPT_TIMEOUT => 30,
         CURLOPT_CONNECTTIMEOUT => 30,
         CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_HEADER         => false,
+        CURLOPT_HEADER => false,
     );
 
 
@@ -281,9 +281,9 @@ class CurlHelper extends Inflector
      * @param string $url
      * @param boolean $raw if response body contains JSON and should be decoded -> helper.
      *
+     * @return mixed
      * @throws Exception if request failed
      *
-     * @return mixed
      */
     private function _httpRequest($method, $url, $raw = false)
     {

@@ -24,7 +24,7 @@ class CityController extends Controller
     {
         return \yii\helpers\ArrayHelper::merge(parent::behaviors(), [
             'verbs' => [
-                'class'   => VerbFilter::className(),
+                'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
                 ],
@@ -50,7 +50,7 @@ class CityController extends Controller
         $dataProvider = $searchModel->search($params);
 
         return $this->render('index', [
-            'searchModel'  => $searchModel,
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -85,7 +85,7 @@ class CityController extends Controller
         }
 
         return $this->render('create', [
-            'model'   => $model,
+            'model' => $model,
             'regions' => GoRegion::find()->all(),
         ]);
     }
@@ -118,7 +118,7 @@ class CityController extends Controller
         }
 
         return $this->render('update', [
-            'model'   => $model,
+            'model' => $model,
             'regions' => GoRegion::find()->all(),
         ]);
     }

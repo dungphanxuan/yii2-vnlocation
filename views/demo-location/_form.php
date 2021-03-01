@@ -25,9 +25,9 @@ use kartik\depdrop\DepDrop;
             <?php
             echo $form->field($model, 'city_id', [
             ])->widget(Select2::classname(), [
-                'data'          => ArrayHelper::map($cities, 'id', 'name'),
-                'language'      => 'vi',
-                'options'       => ['id' => 'ccity-id', 'placeholder' => 'Chọn Tỉnh/Thành Phố ...'],
+                'data' => ArrayHelper::map($cities, 'id', 'name'),
+                'language' => 'vi',
+                'options' => ['id' => 'ccity-id', 'placeholder' => 'Chọn Tỉnh/Thành Phố ...'],
                 'pluginOptions' => [
                     'allowClear' => true
                 ],
@@ -38,14 +38,14 @@ use kartik\depdrop\DepDrop;
             <?php
             echo $form->field($model, 'district_id', [
             ])->widget(DepDrop::classname(), [
-                'options'        => ['id' => 'cdistrict-id'],
-                'type'           => DepDrop::TYPE_SELECT2,
-                'data'           => $dataDistrict,
+                'options' => ['id' => 'cdistrict-id'],
+                'type' => DepDrop::TYPE_SELECT2,
+                'data' => $dataDistrict,
                 'select2Options' => ['pluginOptions' => ['allowClear' => true]],
-                'pluginOptions'  => [
-                    'depends'     => ['ccity-id'],
+                'pluginOptions' => [
+                    'depends' => ['ccity-id'],
                     'placeholder' => 'Chọn Quận/Huyện...',
-                    'url'         => Url::to(['/go/ajax/district-subcat'])
+                    'url' => Url::to(['/go/ajax/district-subcat'])
                 ]
             ]);
             ?>
@@ -54,14 +54,14 @@ use kartik\depdrop\DepDrop;
             <?php
             echo $form->field($model, 'ward_id', [
             ])->widget(DepDrop::classname(), [
-                'options'        => ['id' => 'ward-id'],
-                'type'           => DepDrop::TYPE_SELECT2,
-                'data'           => $dataWard,
+                'options' => ['id' => 'ward-id'],
+                'type' => DepDrop::TYPE_SELECT2,
+                'data' => $dataWard,
                 'select2Options' => ['pluginOptions' => ['allowClear' => true]],
-                'pluginOptions'  => [
-                    'depends'     => ['cdistrict-id'],
+                'pluginOptions' => [
+                    'depends' => ['cdistrict-id'],
                     'placeholder' => 'Chọn Phường/Xã...',
-                    'url'         => Url::to(['/go/ajax/ward-subcat'])
+                    'url' => Url::to(['/go/ajax/ward-subcat'])
                 ]
             ]);
             ?>

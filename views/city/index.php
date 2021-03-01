@@ -24,33 +24,33 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php echo GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel'  => $searchModel,
-        'columns'      => [
+        'filterModel' => $searchModel,
+        'columns' => [
 
             [
-                'attribute'      => 'id',
-                'format'         => 'raw',
-                'headerOptions'  => ['style' => 'text-align:center'],
+                'attribute' => 'id',
+                'format' => 'raw',
+                'headerOptions' => ['style' => 'text-align:center'],
                 'contentOptions' => ['style' => 'width:7%;text-align:center'],
             ],
             [
                 'attribute' => 'region_id',
-                'value'     => function ($model) {
+                'value' => function ($model) {
                     return $model->region ? $model->region->title : null;
                 },
-                'filter'    => \yii\helpers\ArrayHelper::map(\dungphanxuan\vnlocation\models\GoRegion::find()->all(), 'id', 'title')
+                'filter' => \yii\helpers\ArrayHelper::map(\dungphanxuan\vnlocation\models\GoRegion::find()->all(), 'id', 'title')
             ],
             [
                 'attribute' => 'name',
-                'format'    => 'raw',
-                'label'     => 'Tên Tỉnh/TP',
+                'format' => 'raw',
+                'label' => 'Tên Tỉnh/TP',
             ],
             //'slug',
             'short_name',
             [
-                'attribute'      => 'code',
-                'format'         => 'raw',
-                'headerOptions'  => ['style' => 'text-align:center'],
+                'attribute' => 'code',
+                'format' => 'raw',
+                'headerOptions' => ['style' => 'text-align:center'],
                 'contentOptions' => ['style' => 'width:7%;text-align:center'],
             ],
             // 'code_ghn',
@@ -60,11 +60,11 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'allow',
             'priority',
             [
-                'attribute'      => 'total_district',
-                'format'         => 'raw',
-                'headerOptions'  => ['style' => 'text-align:center'],
+                'attribute' => 'total_district',
+                'format' => 'raw',
+                'headerOptions' => ['style' => 'text-align:center'],
                 'contentOptions' => ['style' => 'width:10%;text-align:center'],
-                'value'          => function ($model) {
+                'value' => function ($model) {
                     return Html::a($model->total, [
                         '/go/district/index',
                         'city_id' => $model->id

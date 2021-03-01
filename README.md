@@ -8,9 +8,9 @@
 
 ## Requirements
 
- - yii2-widget-depdrop
- - yii2-widget-select2
- 
+- yii2-widget-depdrop
+- yii2-widget-select2
+
 ## Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
@@ -31,10 +31,9 @@ to the require section of your composer.json.
 
 Then init migrate for setup table
 
- - yii migrate --migrationPath=@vendor/dungphanxuan/yii2-vnlocation/migrations
+- yii migrate --migrationPath=@vendor/dungphanxuan/yii2-vnlocation/migrations
 
-
-##  Configure
+## Configure
 
 > **NOTE:** Make sure that you don't have `go` component configuration in your config files.
 
@@ -51,6 +50,7 @@ Add following lines to your main configuration file:
 ## Import data
 
 Fill console config:
+
 ```php
 'controllerMap' => [
         'location-import' => [
@@ -69,17 +69,16 @@ Run:
 ## Demo Location
 
 Access router **/go/demo-location** to see result
- 
-## Todo 
 
- - Init Migrate
- - Init Region
- - Init City
- - Init District
- - Init Ward
- - Seed Data
- 
- ## Screenshots
- 
- 
+## Todo
+
+- Init Migrate
+- Init Region
+- Init City
+- Init District
+- Init Ward
+- Seed Data
+
+## Screenshots
+
 [Demo Image](https://goo.gl/iVVEpS)

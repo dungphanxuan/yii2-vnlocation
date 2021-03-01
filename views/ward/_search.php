@@ -45,20 +45,20 @@ $cityDesc = empty($model->district_id) ? '' : District::findOne($model->district
             <?php
             echo $form->field($model, 'district_id')->widget(Select2::classname(), [
                 'initValueText' => $cityDesc, // set the initial display text
-                'options'       => ['placeholder' => 'Tìm kiếm Quận/Huyện ...'],
+                'options' => ['placeholder' => 'Tìm kiếm Quận/Huyện ...'],
                 'pluginOptions' => [
-                    'allowClear'        => true,
+                    'allowClear' => true,
                     //'minimumInputLength' => 3,
-                    'language'          => [
+                    'language' => [
                         'errorLoading' => new JsExpression("function () { return 'Waiting for results...'; }"),
                     ],
-                    'ajax'              => [
-                        'url'      => $url,
+                    'ajax' => [
+                        'url' => $url,
                         'dataType' => 'json',
-                        'data'     => new JsExpression('function(params) { return {q:params.term}; }')
+                        'data' => new JsExpression('function(params) { return {q:params.term}; }')
                     ],
-                    'escapeMarkup'      => new JsExpression('function (markup) { return markup; }'),
-                    'templateResult'    => new JsExpression('function(city) { return city.text; }'),
+                    'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
+                    'templateResult' => new JsExpression('function(city) { return city.text; }'),
                     'templateSelection' => new JsExpression('function (city) { return city.text; }'),
                 ],
             ]);

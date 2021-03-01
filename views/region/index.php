@@ -22,23 +22,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php echo GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel'  => $searchModel,
-        'columns'      => [
+        'filterModel' => $searchModel,
+        'columns' => [
             [
-                'attribute'      => 'id',
-                'format'         => 'raw',
-                'headerOptions'  => ['style' => 'text-align:center'],
+                'attribute' => 'id',
+                'format' => 'raw',
+                'headerOptions' => ['style' => 'text-align:center'],
                 'contentOptions' => ['style' => 'width:7%;text-align:center'],
             ],
             'title',
             'slug',
             // 'status',
             [
-                'attribute'      => 'total_city',
-                'format'         => 'raw',
-                'headerOptions'  => ['style' => 'text-align:center'],
+                'attribute' => 'total_city',
+                'format' => 'raw',
+                'headerOptions' => ['style' => 'text-align:center'],
                 'contentOptions' => ['style' => 'width:10%;text-align:center'],
-                'value'          => function ($model) {
+                'value' => function ($model) {
                     return Html::a($model->total, [
                         '/go/city/index',
                         'region_id' => $model->id

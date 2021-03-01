@@ -70,8 +70,8 @@ class Ward extends BaseModel
             [
                 ['district_id'],
                 'exist',
-                'skipOnError'     => true,
-                'targetClass'     => District::className(),
+                'skipOnError' => true,
+                'targetClass' => District::className(),
                 'targetAttribute' => ['district_id' => 'id']
             ]
         ];
@@ -83,24 +83,24 @@ class Ward extends BaseModel
     public function attributeLabels()
     {
         return [
-            'id'             => 'ID',
-            'region_id'      => 'Region',
-            'city_id'        => 'City',
-            'district_id'    => 'District',
-            'name'           => 'Ward Name',
-            'slug'           => 'Slug',
-            'fullname'       => 'Fullname',
-            'short_name'     => 'Short Name',
-            'code_vtp'       => 'Code Vtp',
-            'code_spl'       => 'Code Spl',
-            'priority'       => 'Priority',
+            'id' => 'ID',
+            'region_id' => 'Region',
+            'city_id' => 'City',
+            'district_id' => 'District',
+            'name' => 'Ward Name',
+            'slug' => 'Slug',
+            'fullname' => 'Fullname',
+            'short_name' => 'Short Name',
+            'code_vtp' => 'Code Vtp',
+            'code_spl' => 'Code Spl',
+            'priority' => 'Priority',
             'image_base_url' => 'Image Base Url',
-            'image_path'     => 'Image Path',
-            'lat'            => 'Lat',
-            'lng'            => 'Lng',
-            'status'         => 'Status',
-            'created_at'     => 'Created At',
-            'updated_at'     => 'Updated At',
+            'image_path' => 'Image Path',
+            'lat' => 'Lat',
+            'lng' => 'Lng',
+            'status' => 'Status',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
 

@@ -15,10 +15,10 @@ $this->params['breadcrumbs'][] = 'Update';
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
-        'model'        => $model,
-        'cities'       => $cities,
+        'model' => $model,
+        'cities' => $cities,
         'dataDistrict' => $dataDistrict,
-        'dataWard'     => $dataWard,
+        'dataWard' => $dataWard,
     ]) ?>
 
 </div>

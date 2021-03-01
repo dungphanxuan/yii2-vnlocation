@@ -82,8 +82,8 @@ class District extends BaseModel
             [
                 ['city_id'],
                 'exist',
-                'skipOnError'     => true,
-                'targetClass'     => City::className(),
+                'skipOnError' => true,
+                'targetClass' => City::className(),
                 'targetAttribute' => ['city_id' => 'id']
             ]
         ];
@@ -95,29 +95,29 @@ class District extends BaseModel
     public function attributeLabels()
     {
         return [
-            'id'             => 'ID',
-            'region_id'      => 'Region',
-            'city_id'        => 'City',
-            'name'           => 'District Name',
-            'slug'           => 'Slug',
-            'full_name'      => 'Full Name',
-            'short_name'     => 'Short Name',
-            'code'           => 'Code',
-            'code_ghn'       => 'Code Ghn',
-            'code_vtp'       => 'Code Vtp',
-            'code_kerry'     => 'Code Kerry',
-            'code_spl'       => 'Code Spl',
-            'kind_from'      => 'Kind From',
-            'kind_to'        => 'Kind To',
-            'allow'          => 'Allow',
-            'priority'       => 'Priority',
+            'id' => 'ID',
+            'region_id' => 'Region',
+            'city_id' => 'City',
+            'name' => 'District Name',
+            'slug' => 'Slug',
+            'full_name' => 'Full Name',
+            'short_name' => 'Short Name',
+            'code' => 'Code',
+            'code_ghn' => 'Code Ghn',
+            'code_vtp' => 'Code Vtp',
+            'code_kerry' => 'Code Kerry',
+            'code_spl' => 'Code Spl',
+            'kind_from' => 'Kind From',
+            'kind_to' => 'Kind To',
+            'allow' => 'Allow',
+            'priority' => 'Priority',
             'image_base_url' => 'Image Base Url',
-            'image_path'     => 'Image Path',
-            'lat'            => 'Lat',
-            'lng'            => 'Lng',
-            'status'         => 'Status',
-            'created_at'     => 'Created At',
-            'updated_at'     => 'Updated At',
+            'image_path' => 'Image Path',
+            'lat' => 'Lat',
+            'lng' => 'Lng',
+            'status' => 'Status',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
 

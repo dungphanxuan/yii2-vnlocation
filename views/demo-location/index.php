@@ -21,22 +21,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel'  => $searchModel,
-        'columns'      => [
+        'filterModel' => $searchModel,
+        'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'title',
             [
                 'attribute' => 'city_id',
-                'value'     => function ($model) {
+                'value' => function ($model) {
                     return $model->city ? $model->city->name : null;
                 },
-                'filter'    => \yii\helpers\ArrayHelper::map(\dungphanxuan\vnlocation\models\City::find()->all(), 'id', 'name')
+                'filter' => \yii\helpers\ArrayHelper::map(\dungphanxuan\vnlocation\models\City::find()->all(), 'id', 'name')
             ],
             [
                 'attribute' => 'district_id',
-                'value'     => function ($model) {
+                'value' => function ($model) {
                     return $model->district ? $model->district->name : null;
                 },
                 //'filter'         => \yii\helpers\ArrayHelper::map( \dungphanxuan\vnlocation\models\City::find()->all(), 'id', 'name' )
@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'attribute' => 'ward_id',
-                'value'     => function ($model) {
+                'value' => function ($model) {
                     return $model->ward ? $model->ward->name : null;
                 },
                 //'filter'         => \yii\helpers\ArrayHelper::map( \dungphanxuan\vnlocation\models\City::find()->all(), 'id', 'name' )

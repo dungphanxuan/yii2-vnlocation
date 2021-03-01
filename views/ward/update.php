@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = 'Update';
 <div class="ward-update">
 
     <?php echo $this->render('_form', [
-        'model'        => $model,
-        'regions'      => $regions,
-        'dataCity'     => $dataCity,
+        'model' => $model,
+        'regions' => $regions,
+        'dataCity' => $dataCity,
         'dataDistrict' => $dataDistrict,
-        'districts'    => $districts,
+        'districts' => $districts,
     ]) ?>
 
 </div>

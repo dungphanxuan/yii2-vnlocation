@@ -25,7 +25,7 @@ $this->registerJsFile('https://maps.googleapis.com/maps/api/js?key=' . $gmapApiK
         ]); ?>
 
         <?php echo $form->errorSummary($model, [
-            'class'  => 'alert alert-warning alert-dismissible',
+            'class' => 'alert alert-warning alert-dismissible',
             'header' => '
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
     <h4><i class="icon fa fa-warning"></i> Vui lòng sửa các lỗi sau!</h4>'
@@ -39,14 +39,14 @@ $this->registerJsFile('https://maps.googleapis.com/maps/api/js?key=' . $gmapApiK
 
         <?php
         echo $form->field($model, 'city_id')->widget(DepDrop::classname(), [
-            'options'        => ['id' => 'city-id'],
-            'type'           => DepDrop::TYPE_SELECT2,
-            'data'           => $dataCity,
+            'options' => ['id' => 'city-id'],
+            'type' => DepDrop::TYPE_SELECT2,
+            'data' => $dataCity,
             'select2Options' => ['pluginOptions' => ['allowClear' => true]],
-            'pluginOptions'  => [
-                'depends'     => ['cregion-id'],
+            'pluginOptions' => [
+                'depends' => ['cregion-id'],
                 'placeholder' => 'Chọn Tỉnh/Thành Phố...',
-                'url'         => Url::to(['/go/city/subcat'])
+                'url' => Url::to(['/go/city/subcat'])
             ]
         ]);
         ?>
@@ -84,17 +84,17 @@ $this->registerJsFile('https://maps.googleapis.com/maps/api/js?key=' . $gmapApiK
             <div class="col-sm-8 col-xs-8">
                 <div class="col-sm-3 nopleft">
                     <?= Html::activeTextInput($model, 'lat', [
-                        'class'        => 'form-control',
+                        'class' => 'form-control',
                         'autocomplete' => 'off',
-                        'id'           => 'lat-value',
-                        'placeholder'  => 'Vĩ độ'
+                        'id' => 'lat-value',
+                        'placeholder' => 'Vĩ độ'
                     ]) ?>
                     <p></p>
                     <?= Html::activeTextInput($model, 'lng', [
-                        'class'        => 'form-control',
+                        'class' => 'form-control',
                         'autocomplete' => 'off',
-                        'id'           => 'lng-value',
-                        'placeholder'  => 'Kinh độ'
+                        'id' => 'lng-value',
+                        'placeholder' => 'Kinh độ'
                     ]) ?>
                 </div>
                 <div class="col-sm-9">
@@ -132,9 +132,9 @@ $this->registerJsFile('https://maps.googleapis.com/maps/api/js?key=' . $gmapApiK
                     echo Html::a('Delete', ['delete', 'id' => $model->id],
                         [
                             'class' => 'btn btn-warning btn200 bold',
-                            'data'  => [
+                            'data' => [
                                 'confirm' => 'Are you sure you want to delete?',
-                                'method'  => 'post',
+                                'method' => 'post',
                             ]
                         ]);
                 }

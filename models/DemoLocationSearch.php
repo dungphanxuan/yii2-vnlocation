@@ -59,15 +59,15 @@ class DemoLocationSearch extends DemoLocation
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id'          => $this->id,
-            'city_id'     => $this->city_id,
+            'id' => $this->id,
+            'city_id' => $this->city_id,
             'district_id' => $this->district_id,
-            'ward_id'     => $this->ward_id,
-            'status'      => $this->status,
-            'created_at'  => $this->created_at,
-            'updated_at'  => $this->updated_at,
-            'created_by'  => $this->created_by,
-            'updated_by'  => $this->updated_by,
+            'ward_id' => $this->ward_id,
+            'status' => $this->status,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'created_by' => $this->created_by,
+            'updated_by' => $this->updated_by,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

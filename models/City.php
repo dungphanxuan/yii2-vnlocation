@@ -75,8 +75,8 @@ class City extends BaseModel
             [
                 ['region_id'],
                 'exist',
-                'skipOnError'     => true,
-                'targetClass'     => GoRegion::className(),
+                'skipOnError' => true,
+                'targetClass' => GoRegion::className(),
                 'targetAttribute' => ['region_id' => 'id']
             ],
         ];
@@ -88,26 +88,26 @@ class City extends BaseModel
     public function attributeLabels()
     {
         return [
-            'id'             => 'ID',
-            'region_id'      => 'Region',
-            'name'           => 'Tên tỉnh/thành phố',
-            'slug'           => 'Slug',
-            'short_name'     => 'Short Name',
-            'code'           => 'Code',
-            'code_ghn'       => 'Code Ghn',
-            'code_vtp'       => 'Code Vtp',
-            'code_njv'       => 'Code Njv',
-            'code_kerry'     => 'Code Kerry',
-            'allow'          => 'Allow',
-            'priority'       => 'Priority',
-            'image'          => 'Image',
+            'id' => 'ID',
+            'region_id' => 'Region',
+            'name' => 'Tên tỉnh/thành phố',
+            'slug' => 'Slug',
+            'short_name' => 'Short Name',
+            'code' => 'Code',
+            'code_ghn' => 'Code Ghn',
+            'code_vtp' => 'Code Vtp',
+            'code_njv' => 'Code Njv',
+            'code_kerry' => 'Code Kerry',
+            'allow' => 'Allow',
+            'priority' => 'Priority',
+            'image' => 'Image',
             'image_base_url' => 'Image Base Url',
-            'image_path'     => 'Image Path',
-            'lat'            => 'Lat',
-            'lng'            => 'Lng',
-            'status'         => 'Status',
-            'created_at'     => 'Created At',
-            'updated_at'     => 'Updated At',
+            'image_path' => 'Image Path',
+            'lat' => 'Lat',
+            'lng' => 'Lng',
+            'status' => 'Status',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
 

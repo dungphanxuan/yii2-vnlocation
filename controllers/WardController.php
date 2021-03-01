@@ -26,7 +26,7 @@ class WardController extends Controller
     {
         return \yii\helpers\ArrayHelper::merge(parent::behaviors(), [
             'verbs' => [
-                'class'   => VerbFilter::className(),
+                'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
                 ],
@@ -53,7 +53,7 @@ class WardController extends Controller
         $dataProvider = $searchModel->search($params);
 
         return $this->render('index', [
-            'searchModel'  => $searchModel,
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -89,11 +89,11 @@ class WardController extends Controller
         }
 
         return $this->render('create', [
-            'model'        => $model,
-            'regions'      => GoRegion::find()->all(),
-            'dataCity'     => $dataCity,
+            'model' => $model,
+            'regions' => GoRegion::find()->all(),
+            'dataCity' => $dataCity,
             'dataDistrict' => $dataDistrict,
-            'districts'    => District::find()->all(),
+            'districts' => District::find()->all(),
         ]);
     }
 
@@ -116,7 +116,7 @@ class WardController extends Controller
         $cookies1 = Yii::$app->response->cookies;
         if ($backUrl) {
             $cookies1->add(new \yii\web\Cookie([
-                'name'  => 'url2',
+                'name' => 'url2',
                 'value' => $backUrl,
             ]));
         } else {
@@ -155,11 +155,11 @@ class WardController extends Controller
         }
 
         return $this->render('update', [
-            'model'        => $model,
-            'regions'      => GoRegion::find()->all(),
-            'dataCity'     => $dataCity,
+            'model' => $model,
+            'regions' => GoRegion::find()->all(),
+            'dataCity' => $dataCity,
             'dataDistrict' => $dataDistrict,
-            'districts'    => District::find()->all(),
+            'districts' => District::find()->all(),
         ]);
     }
 

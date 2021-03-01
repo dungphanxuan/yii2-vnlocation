@@ -39,7 +39,7 @@ class GoRegion extends BaseModel
     {
         return [
             [
-                'class'              => TimestampBehavior::className(),
+                'class' => TimestampBehavior::className(),
                 'createdAtAttribute' => 'created_at',
                 'updatedAtAttribute' => 'created_at',
             ]
@@ -65,14 +65,14 @@ class GoRegion extends BaseModel
     public function attributeLabels()
     {
         return [
-            'id'             => 'ID',
-            'title'          => 'Title',
-            'slug'           => 'Slug',
-            'image'          => 'Image',
+            'id' => 'ID',
+            'title' => 'Title',
+            'slug' => 'Slug',
+            'image' => 'Image',
             'image_base_url' => 'Image Base Url',
-            'image_path'     => 'Image Path',
-            'status'         => 'Status',
-            'created_at'     => 'Created At',
+            'image_path' => 'Image Path',
+            'status' => 'Status',
+            'created_at' => 'Created At',
         ];
     }
 

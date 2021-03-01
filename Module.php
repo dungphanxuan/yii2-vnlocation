@@ -3,6 +3,7 @@
 namespace dungphanxuan\vnlocation;
 
 use Yii;
+
 /**
  * Go module definition class
  */

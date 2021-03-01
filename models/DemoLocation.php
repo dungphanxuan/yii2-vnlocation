@@ -63,19 +63,19 @@ class DemoLocation extends BaseModel
     public function attributeLabels()
     {
         return [
-            'id'             => 'ID',
-            'title'          => 'Title',
-            'body'           => 'Body',
-            'city_id'        => 'City',
-            'district_id'    => 'District',
-            'ward_id'        => 'Ward',
+            'id' => 'ID',
+            'title' => 'Title',
+            'body' => 'Body',
+            'city_id' => 'City',
+            'district_id' => 'District',
+            'ward_id' => 'Ward',
             'image_base_url' => 'Image Base Url',
-            'image_path'     => 'Image Path',
-            'status'         => 'Status',
-            'created_at'     => 'Created At',
-            'updated_at'     => 'Updated At',
-            'created_by'     => 'Created By',
-            'updated_by'     => 'Updated By',
+            'image_path' => 'Image Path',
+            'status' => 'Status',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
+            'created_by' => 'Created By',
+            'updated_by' => 'Updated By',
         ];
     }
 

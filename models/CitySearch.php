@@ -59,7 +59,7 @@ class CitySearch extends City
             ->orderBy(['priority' => SORT_DESC]);
 
         $dataProvider = new ActiveDataProvider([
-            'query'      => $query,
+            'query' => $query,
             'pagination' => [
                 'pageSize' => 50,
             ],
@@ -70,13 +70,13 @@ class CitySearch extends City
         }
 
         $query->andFilterWhere([
-            'id'         => $this->id,
-            'region_id'  => $this->region_id,
-            'allow'      => $this->allow,
-            'priority'   => $this->priority,
-            'lat'        => $this->lat,
-            'lng'        => $this->lng,
-            'status'     => $this->status,
+            'id' => $this->id,
+            'region_id' => $this->region_id,
+            'allow' => $this->allow,
+            'priority' => $this->priority,
+            'lat' => $this->lat,
+            'lng' => $this->lng,
+            'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

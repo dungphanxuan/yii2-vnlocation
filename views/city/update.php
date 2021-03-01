@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = 'Update';
 <div class="city-update">
 
     <?php echo $this->render('_form', [
-        'model'   => $model,
+        'model' => $model,
         'regions' => $regions,
     ]) ?>
 

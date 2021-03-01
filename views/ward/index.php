@@ -28,30 +28,30 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php echo GridView::widget([
             'dataProvider' => $dataProvider,
             //'filterModel'  => $searchModel,
-            'pager'        => [
+            'pager' => [
                 'maxButtonCount' => 20,    // Set maximum number of page buttons that can be displayed
             ],
-            'columns'      => [
+            'columns' => [
                 //[ 'class' => 'yii\grid\SerialColumn' ],
 
                 [
-                    'attribute'      => 'id',
-                    'format'         => 'raw',
-                    'headerOptions'  => ['style' => 'text-align:center'],
+                    'attribute' => 'id',
+                    'format' => 'raw',
+                    'headerOptions' => ['style' => 'text-align:center'],
                     'contentOptions' => ['style' => 'width:7%;text-align:center'],
                 ],
                 [
-                    'attribute'      => 'city_id',
-                    'label'          => 'Tỉnh/TP',
+                    'attribute' => 'city_id',
+                    'label' => 'Tỉnh/TP',
                     'contentOptions' => ['style' => 'width:10%'],
-                    'value'          => function ($model) {
+                    'value' => function ($model) {
                         return $model->district ? $model->district->city->name : null;
                     },
                     //'filter'         => \yii\helpers\ArrayHelper::map( \dungphanxuan\vnlocation\models\City::find()->all(), 'id', 'name' )
                 ],
                 [
                     'attribute' => 'district_id',
-                    'value'     => function ($model) {
+                    'value' => function ($model) {
                         return $model->district ? $model->district->name : null;
                     },
                     //'filter'         => \yii\helpers\ArrayHelper::map( \dungphanxuan\vnlocation\models\City::find()->all(), 'id', 'name' )
@@ -61,9 +61,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 //'fullname',
                 // 'short_name',
                 [
-                    'attribute'      => 'code_vtp',
-                    'format'         => 'raw',
-                    'headerOptions'  => ['style' => 'text-align:center'],
+                    'attribute' => 'code_vtp',
+                    'format' => 'raw',
+                    'headerOptions' => ['style' => 'text-align:center'],
                     'contentOptions' => ['style' => 'width:10%;text-align:center'],
                 ],
                 // 'code_spl',
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 // 'updated_at',
 
                 [
-                    'class'          => 'dungphanxuan\vnlocation\grid\ActionColumn',
+                    'class' => 'dungphanxuan\vnlocation\grid\ActionColumn',
                     'contentOptions' => ['style' => 'width:12%;text-align:center'],
                 ],
             ],

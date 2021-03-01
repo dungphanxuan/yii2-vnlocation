@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="city-create">
 
     <?php echo $this->render('_form', [
-        'model'   => $model,
+        'model' => $model,
         'regions' => $regions,
     ]) ?>
 

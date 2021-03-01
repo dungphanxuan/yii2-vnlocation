@@ -61,7 +61,7 @@ class DistrictSearch extends District
         $query = District::find()->with(['city']);
 
         $dataProvider = new ActiveDataProvider([
-            'query'      => $query,
+            'query' => $query,
             'pagination' => [
                 'pageSize' => 50,
             ],
@@ -72,15 +72,15 @@ class DistrictSearch extends District
         }
 
         $query->andFilterWhere([
-            'id'         => $this->id,
-            'city_id'    => $this->city_id,
-            'kind_from'  => $this->kind_from,
-            'kind_to'    => $this->kind_to,
-            'allow'      => $this->allow,
-            'priority'   => $this->priority,
-            'lat'        => $this->lat,
-            'lng'        => $this->lng,
-            'status'     => $this->status,
+            'id' => $this->id,
+            'city_id' => $this->city_id,
+            'kind_from' => $this->kind_from,
+            'kind_to' => $this->kind_to,
+            'allow' => $this->allow,
+            'priority' => $this->priority,
+            'lat' => $this->lat,
+            'lng' => $this->lng,
+            'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

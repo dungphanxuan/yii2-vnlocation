@@ -13,8 +13,8 @@ $this->params['breadcrumbs'][] = 'Cập nhật';
 <div class="district-update">
 
     <?php echo $this->render('_form', [
-        'model'    => $model,
-        'regions'  => $regions,
+        'model' => $model,
+        'regions' => $regions,
         'dataCity' => $dataCity,
     ]) ?>
 
